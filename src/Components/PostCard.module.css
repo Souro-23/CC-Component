@@ -1,0 +1,136 @@
+.Card{
+	width:100%;
+	box-shadow: 0px 0px 60px 0px rgba(71, 74, 182, 0.12);
+	border-radius: 10px;
+	margin-bottom: 20px;	
+}
+.cardHeader{
+	padding: 15px;
+}
+.userDetails{
+	display: flex;
+}
+.postContent{
+	font-family: 'PT Serif', serif;
+	font-size: 1.2rem;
+	color: black;
+	margin: 0;
+}
+.profilePic{
+	padding: 5px;
+}
+.profilePic img{
+	height:50px;
+	width:50px;
+	border-radius: 50%;
+}
+.profileName a{
+	color: black;
+	font-weight: 600;
+	font-size: 17px;
+}
+.postTime{
+	color: grey;
+}
+.profileInfo{
+	padding: 5px;
+	display: block;
+}
+.postContent{
+	padding: 5px 20px 10px 20px;
+
+}
+.postimage img {
+	height: auto;
+	width: 100%;
+	max-height: 36rem;
+	cursor:pointer;
+}
+.postDetails{
+	padding:10px 15px 5px 15px;
+}
+.postEdits{
+	border-top: 1px solid grey;
+	padding: 10px 15px 10px 15px;
+	font-size: 17px;
+	font-weight: 600;	
+}
+.anything:hover{
+	background-color:gainsboro;
+	cursor: pointer;
+	border-radius:5px;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+	background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 3rem;
+}
+  ::-webkit-scrollbar-thumb:hover {
+	background: #555;
+  }
+.icons{
+	display:flex;
+	justify-content:flex-start;
+	align-items:center
+}
+.heart{
+	color: red;
+	font-size: 28px;
+	padding-right:1.3rem
+}
+.postimagemodal img{
+	height:100%;
+	width:100%;
+	cursor:pointer;
+}
+.cancelicon{
+    color:rgb(161, 153, 153);
+    z-index: 300;
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width:600px) {
+	.postimage img {
+		max-height: 19rem;
+	}	
+	/* .input{
+		background-color:#dbdbdb;
+		border-radius: 2rem;
+		margin: 0rem ;
+	}
+
+
+	.commentInput{
+		padding:2px 8px 4px 2px;
+	
+	}
+	.commentsList{
+		padding:2px 8px 4px 2px;
+	
+	}
+	.commentBox{
+		scroll-behavior:all;
+		display: block;
+		border-radius: .6rem;
+		padding: 0 1rem;
+	} */
+
+	.postContent{
+		font-size: 1.1rem;
+	}
+	.shine:hover{
+		font-size: 14px;
+	}
+}
