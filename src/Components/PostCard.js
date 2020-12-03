@@ -45,7 +45,7 @@ export default function PostCard(props) {
           </div>
           <Carousel renderThumbs={() => null}>
             {props.data.images.map(image => (
-              <div className={classes.postimage}>
+              <div onClick={()=>console.log(image)} className={classes.postimage}>
                 <img alt='' src={image} />
               </div>
             ))}

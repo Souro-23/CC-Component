@@ -9,7 +9,8 @@ const dummyData={
   images:[
     "https://testccserver.s3.amazonaws.com/media/feeds/images/AMAZON-PLACEMENT-MATERIAL.jpeg",
     "https://testccserver.s3.amazonaws.com/media/feeds/images/d86bac5b-b105-47a5-a228-0bb7e442c185.jpg",
-    "https://testccserver.s3.amazonaws.com/media/feeds/images/GRAPECITY.jpeg"
+    "https://testccserver.s3.amazonaws.com/media/feeds/images/GRAPECITY.jpeg",
+    "https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/128538894_196774765270519_2512241948334642923_o.jpg?_nc_cat=110&ccb=2&_nc_sid=730e14&_nc_ohc=sWlTKtzU0OkAX8E7h8j&_nc_ht=scontent.fdel1-1.fna&oh=d400598ef9196321ef20c92b7d294b4a&oe=5FEE27FD"
 ]
 }
 
@@ -55,7 +56,7 @@ export class App extends Component {
           <Content >
             <div className="sitelayoutbackground" style={{ minHeight: 360 }}>
               <Row justify="center">
-                <Col xl={2} lg={0} md={0} sm={0} />
+                <Col xl={2} lg={2} md={2} sm={0} />
                 <Col
                   xl={13}
                   lg={15}

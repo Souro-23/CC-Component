@@ -45,3 +45,13 @@
     margin-left: 0px;
   }
 }
+
+.slide {
+	background-color:rgb(230, 230, 238)!important;
+	display: grid;
+	align-items: center;
+	height: auto;
+}
+.carousel-status{
+	display:none;
+}
