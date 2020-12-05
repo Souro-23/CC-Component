@@ -4,6 +4,8 @@ import { Row, Col } from "antd";
 import { EllipsisOutlined, } from "@ant-design/icons";
 import { Dropdown, Menu } from "antd";
 
+import  FullScreenCard  from './fullScreenCard';
+
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -45,7 +47,7 @@ export default function PostCard(props) {
           </div>
           <Carousel renderThumbs={() => null}>
             {props.data.images.map(image => (
-              <div onClick={()=>console.log(image)} className={classes.postimage}>
+              <div  onclick={console.log(image)} className={classes.postimage}>
                 <img alt='' src={image} />
               </div>
             ))}
@@ -68,7 +70,13 @@ export default function PostCard(props) {
                 style={{ padding: "0 .6rem", color: 'grey' }}></ion-icon>
             </Col>
           </Row>
+          
         </div>
+        <FullScreenCard images = {props.data.images}/>
       </div>
+
+ 
+      
     )
 }
+

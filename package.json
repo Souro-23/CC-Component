@@ -10,6 +10,7 @@
     "antd": "^4.9.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-fullscreen-image": "0.0.3",
     "react-responsive-carousel": "^3.2.10",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
