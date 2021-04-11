@@ -1,82 +1,48 @@
-import React, { Component } from 'react'
-import { Col, Layout, Menu, Row } from 'antd';
-import './App.css'
-import PostCard from './Components/PostCard';
+import "./styles.css";
+import React from "react";
+import Root from "./Components/Root/Root";
 
-const { Content, Footer, Sider } = Layout;
 
-const dummyData={
-  images:[
-    "https://testccserver.s3.amazonaws.com/media/feeds/images/AMAZON-PLACEMENT-MATERIAL.jpeg",
-    "https://testccserver.s3.amazonaws.com/media/feeds/images/d86bac5b-b105-47a5-a228-0bb7e442c185.jpg",
-    "https://testccserver.s3.amazonaws.com/media/feeds/images/GRAPECITY.jpeg",
-    "https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/128538894_196774765270519_2512241948334642923_o.jpg?_nc_cat=110&ccb=2&_nc_sid=730e14&_nc_ohc=sWlTKtzU0OkAX8E7h8j&_nc_ht=scontent.fdel1-1.fna&oh=d400598ef9196321ef20c92b7d294b4a&oe=5FEE27FD"
-]
+
+var components = [
+  {
+    type: "md",
+    content: "When \\(a \ne 0\\), there are two solutions to \(ax^2 + bx + c = 0\) and they are \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]"
+  },
+  {
+    type: "image",
+    src: "This is image"
+  },
+  {
+    type: "md",
+    content: `~~~mermaid
+    graph TB
+    A[input]-->B[College]
+    B-- Exclude -->C[Region]
+    B-- Include -->D[Branch]
+    D-->E[Output]
+    C-- Include -->F[Branch]
+    C-- Exclude -->G[Nearest Regions Top 3]
+    F-- Include -->H[Pick Students Uniformly from selection]
+    F-- Exclude --> L[Pick Students Randomly From that Region]
+    G-->I[Branch]
+    I-- Include -->J[Pick Students Uniformly from selection]
+    I -- Exclude -->K[Pick Students Randomly]
+    ~~~
+
+    ~~~ py
+    x=10
+    ~~~
+    `
+  }
+];
+
+
+
+export default function App() {
+
+  
+  return (
+    <Root/>
+  );
 }
-
-
-
-export class App extends Component {
-  state = {
-    showSideDrawer: false
-  }
-  sideDrawerClosedHandler = () => {
-    this.setState({ showSideDrawer: false });
-  }
-
-  sideDrawerToggleHandler = (collapsed) => {
-    this.setState((prevState) => {
-      return { showSideDrawer: !collapsed };
-    });
-  }
-  render() {
-    return (
-      <Layout>
-        <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
-          onBreakpoint={broken => {
-          }}
-          collapsed={!this.state.showSideDrawer}
-          onCollapse={(collapsed, type) => {
-            this.sideDrawerToggleHandler(collapsed)
-          }}
-          style={{
-            position: 'fixed',
-            height: '100vh'
-          }}
-        >
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" >
-              Home
-            </Menu.Item>
-          </Menu>
-        </Sider>
-        <Layout >
-          <Content >
-            <div className="sitelayoutbackground" style={{ minHeight: 360 }}>
-              <Row justify="center">
-                <Col xl={2} lg={2} md={2} sm={0} />
-                <Col
-                  xl={13}
-                  lg={15}
-                  md={16}
-                  sm={20}
-                  xs={24}>
-                  <br/><br/>
-                  <PostCard data={dummyData}/>
-                </Col>
-                <Col xl={9} lg={9} md={7} sm={0} xs={0} >
-                </Col>
-              </Row>
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>Citizen Choice ©2020 Created by react</Footer>
-        </Layout>
-      </Layout>
-    )
-  }
-}
-
-export default App
-
