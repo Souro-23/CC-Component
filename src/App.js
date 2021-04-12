@@ -4,6 +4,7 @@ import { Layout, Menu } from "antd";
 import "./App.css";
 import PathList from "./Components/Paths/PathList";
 import CardList from "./Components/Cards/CardList";
+import Subtopic from "./Components/SubtopicModule/Subtopic";
 
 const { Content, Footer, Sider } = Layout;
 
@@ -38,11 +39,12 @@ const App = () => {
             <Router>
               <Route path="/path" exact component={CardList} />
               <Route path="/path/:id" component={PathList} />
+              <Route path ="/" component={Subtopic}/>
             </Router>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          Citizen Choice ©2020 Created by react
+          CitizenChoice ©2020 Created by react
         </Footer>
       </Layout>
     </Layout>
