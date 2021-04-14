@@ -9,11 +9,11 @@ const AddComponent = ({ onAddComponent, index }) => {
       <FileImageOutlined onClick={() => onAddComponent(index,"image")}  className={classes.moreIcon} />
       <LogoutOutlined onClick={() => onAddComponent(index,"quiz")}   className={classes.moreIcon} />
       <PicCenterOutlined  onClick={() => onAddComponent(index,"md")}  className={classes.moreIcon}/>
+       <PicCenterOutlined onClick={() => onAddComponent(index, "codeBlock")} className={classes.moreIcon}/>
     </div>
   );
   return (
     <div class={classes.hoverMenu}>
-       
       <Popover content={content} placement="right">
         <button className={classes.hoverMenu__Btn}>+</button>
       </Popover>
