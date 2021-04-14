@@ -2,7 +2,7 @@ import "./styles.css";
 import React from "react";
 import Root from "./Components/Root/Root";
 
-import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import { Col, Row } from "antd";
 
 var components = [
@@ -41,14 +41,12 @@ var components = [
 
 export default function App() {
   return (
-    <Row  justify="center">
+    <Row justify='center'>
       <Col lg={12}>
-        <br/><br/>
-        <Root/>
+        <br />
+        <br />
+        <Root />
       </Col>
     </Row>
-
-   
   );
-
 }

@@ -3,6 +3,7 @@ import ImageSelector from "../AddImage/ImageSelector";
 import CodeBlock from "../CodeBlock/CodeBlock";
 import MarkdownEditor from "../Markdown/Markdown";
 import QuizCreator from "../Quiz/QuizEditor";
+import { Row, Col } from "antd";
 
 export const subtopicContext = React.createContext();
 const UP = -1;
@@ -138,4 +139,3 @@ var components = [
       `,
   },
 ];
-

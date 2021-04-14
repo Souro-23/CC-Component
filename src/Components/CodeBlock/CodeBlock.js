@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import AddComponent from "../AddComponent/AddComponent";
 import { subtopicContext } from "../Root/Root";
-import { Input, Select } from "antd";
+import { Input, Row, Select, Col } from "antd";
 import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import classes from "./CodeBlock.module.css";
@@ -50,7 +50,7 @@ export default function CodeBlock({ component, index }) {
           <CloseCircleOutlined />
         </button>
       </div>
-      <div className={classes.codeBlock__title}>Code Editor</div>
+
       <div className={classes.codeBlock__editor}>
         <div className={classes.codeBlock__input}>
           <div className={classes.codeBlock__title}>Code Input</div>
