@@ -1,6 +1,8 @@
 import "./styles.css";
 import React from "react";
 import Root from "./Components/Root/Root";
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import { Col, Row } from "antd";
 
 
 
@@ -43,6 +45,14 @@ export default function App() {
 
   
   return (
-    <Root/>
+    <Row  justify="center">
+      <Col lg={12}>
+        <br/><br/>
+        <Root/>
+      </Col>
+       
+    </Row>
+
+   
   );
 }

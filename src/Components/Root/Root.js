@@ -52,6 +52,7 @@ export default function Root() {
         setSubtopic([...newSubtopic]);
     };
     const handleMove = (position, direction) => {
+      console.log(position , direction)
         if (position < 0)
           throw new Error("Given item not found.")
         else if ((direction === UP && position === 0) || (direction === DOWN && position === subtopic.length - 1))
@@ -62,6 +63,7 @@ export default function Root() {
         setSubtopic(newSubtopic)
     }
     const RemoveComponent = (position) => {
+      console.log("removed")
         let newSubtopic = subtopic.filter((item, index) => index !== position)
         setSubtopic(newSubtopic)
     }
@@ -87,10 +89,7 @@ export default function Root() {
 
 
 var components = [
-    {
-      type: "md",
-      content: "When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]"
-    },
+     
     {
       type: "image",
       src: "This is image"
@@ -98,26 +97,5 @@ var components = [
     {
       type: "quiz",
       content: 'this is a quiz'
-    },{
-      type: "md",
-      content: `~~~mermaid
-      graph TB
-      A[input]-->B[College]
-      B-- Exclude -->C[Region]
-      B-- Include -->D[Branch]
-      D-->E[Output]
-      C-- Include -->F[Branch]
-      C-- Exclude -->G[Nearest Regions Top 3]
-      F-- Include -->H[Pick Students Uniformly from selection]
-      F-- Exclude --> L[Pick Students Randomly From that Region]
-      G-->I[Branch]
-      I-- Include -->J[Pick Students Uniformly from selection]
-      I -- Exclude -->K[Pick Students Randomly]
-      ~~~
-  
-      ~~~ py
-      x=10
-      ~~~
-      `
     }
   ];
