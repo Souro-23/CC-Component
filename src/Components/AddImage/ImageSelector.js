@@ -4,6 +4,7 @@ import { subtopicContext } from "../Root/Root";
 import { Popover, Spin } from 'antd'
 import { ArrowDownOutlined, LoadingOutlined, ArrowUpOutlined, CloseCircleOutlined, MoreOutlined } from '@ant-design/icons'
 import AddComponent from '../AddComponent/AddComponent';
+import IconClasses from '../MoreIcons.module.css'
 
 
 const UP = -1
@@ -17,10 +18,10 @@ export default function ImageSelector({ component, index }) {
 
 
     const content = (
-        <div className={classes.moreIcons}>
-            <ArrowUpOutlined onClick={() => handleMove(index, UP)} className={classes.moreIcon} />
-            <CloseCircleOutlined onClick={() => RemoveComponent(index)}  className={classes.moreIcon} />
-            <ArrowDownOutlined onClick={()=>handleMove(index, DOWN)}  className={classes.moreIcon} />
+        <div className={IconClasses.moreIcons}>
+            <ArrowUpOutlined onClick={() => handleMove(index, UP)} className={IconClasses.moreIcon} />
+            <CloseCircleOutlined onClick={() => RemoveComponent(index)}  className={IconClasses.moreIcon} />
+            <ArrowDownOutlined onClick={()=>handleMove(index, DOWN)}  className={IconClasses.moreIcon} />
         </div>
     );
     const uploadMultipleFiles = (e) => {
@@ -65,7 +66,7 @@ export default function ImageSelector({ component, index }) {
             <div >
                 <div style={{ display: 'flex', justifyContent: "end" }}>
                     <Popover placement="bottomRight" content={content} trigger="hover">
-                        <MoreOutlined className={classes.more} />
+                        <MoreOutlined className={IconClasses.more} />
                     </Popover>
                 </div>
                 <label className={classes.addImage} htmlFor='subtopicImages'>Select an Image</label>
@@ -94,7 +95,7 @@ export default function ImageSelector({ component, index }) {
                     </div>
             ))}
         </div>
-        <AddComponent onAddComponent={addComponent} index={index} />
+        
         </div>
 
 

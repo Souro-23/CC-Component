@@ -4,6 +4,8 @@ import CodeBlock from "../CodeBlock/CodeBlock";
 import MarkdownEditor from "../Markdown/Markdown";
 import QuizCreator from "../Quiz/QuizEditor";
 import { Row, Col } from "antd";
+import CkEditor from "../CKEditor/CkEditor";
+import AddComponent from "../AddComponent/AddComponent";
 
 export const subtopicContext = React.createContext();
 const UP = -1;
@@ -81,18 +83,38 @@ export default function Root() {
       {subtopic.map((component, index) => {
         if (component.type === "md")
           return (
-            <MarkdownEditor key={index} component={component} index={index} />
+            <>
+              <MarkdownEditor key={index} component={component} index={index} />
+              <AddComponent onAddComponent={addComponent} index={index} />
+            </>
           );
         if (component.type === "image")
           return (
-            <ImageSelector key={index} component={component} index={index} />
+            <>
+              <ImageSelector key={index} component={component} index={index} />
+              <AddComponent onAddComponent={addComponent} index={index} />
+            </>
           );
         if (component.type === "quiz")
           return (
-            <QuizCreator key={index} component={component} index={index} />
+            <>
+              <QuizCreator key={index} component={component} index={index} />
+              <AddComponent onAddComponent={addComponent} index={index} />
+            </>
           );
         if (component.type === "codeBlock")
-          return <CodeBlock key={index} component={component} index={index} />;
+          return (
+            <>
+              <CodeBlock key={index} component={component} index={index} />
+              <AddComponent onAddComponent={addComponent} index={index} />
+            </>)
+
+        if (component.type === "CKEditor")
+          return (
+            <>
+              <CkEditor key={index} component={component} index={index} />
+              <AddComponent onAddComponent={addComponent} index={index} />
+            </>)
       })}
     </subtopicContext.Provider>
   );
@@ -100,42 +122,8 @@ export default function Root() {
 
 var components = [
   {
-    type: "md",
+    type: "CKEditor",
     content:
       "When (a \ne 0), there are two solutions to (ax^2 + bx + c = 0) and they are [x = {-b pm sqrt{b^2-4ac} over 2a}.]",
-  },
-  {
-    type: "image",
-    src: "This is image",
-  },
-  {
-    type: "quiz",
-    quizData: "this is a quiz",
-  },
-  {
-    type: "codeBlock",
-    content: "num => num + 1",
-  },
-  {
-    type: "md",
-    content: `~~~mermaid
-      graph TB
-      A[input]-->B[College]
-      B-- Exclude -->C[Region]
-      B-- Include -->D[Branch]
-      D-->E[Output]
-      C-- Include -->F[Branch]
-      C-- Exclude -->G[Nearest Regions Top 3]
-      F-- Include -->H[Pick Students Uniformly from selection]
-      F-- Exclude --> L[Pick Students Randomly From that Region]
-      G-->I[Branch]
-      I-- Include -->J[Pick Students Uniformly from selection]
-      I -- Exclude -->K[Pick Students Randomly]
-      ~~~
-  
-      ~~~ py
-      x=10
-      ~~~
-      `,
-  },
+  }
 ];
