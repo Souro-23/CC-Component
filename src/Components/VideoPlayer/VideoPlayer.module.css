@@ -1,0 +1,28 @@
+.videoComponent{
+  padding: 1rem;
+  background-color: #fafafa;
+  border-radius: 10px;
+  
+}
+
+
+.playerWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.videoInput {
+  display: flex;
+  flex-direction: row;
+}
+.videoInput input{
+  height: 2.5rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius:5px;
+}
+.videoInput button{
+  height: 2.5rem;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius:5px;
+}
+

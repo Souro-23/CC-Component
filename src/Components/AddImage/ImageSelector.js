@@ -51,6 +51,8 @@ export default function ImageSelector({ component, index }) {
             })
         }
         setImageArray([ ...uploadingFiles, ...imageArray])
+       
+        changeSubtopic(index,{src:[ ...uploadingFiles, ...imageArray], caption:"image name", isbackground:false} ,"img")
     }
 
     const removeFile = (url) => {

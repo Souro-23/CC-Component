@@ -34,7 +34,8 @@ export default function CodeBlock({ component, index }) {
 
   const [language, setLanguage] = useState("");
   const changeContent = (e) => {
-    changeSubtopic(index, e.target.value, "codeBlock");
+    console.log(e.target.value)
+    changeSubtopic(index, e.target.value, "code");
   };
   const content = (
     <div className={IconClasses.moreIcons}>
@@ -47,6 +48,7 @@ export default function CodeBlock({ component, index }) {
   const chooseLanguage = (value) => {
     setLanguage(value);
   };
+   
 
   return (
     <div className={classes.codeBlock}>
@@ -73,7 +75,7 @@ export default function CodeBlock({ component, index }) {
             </Input.Group>
           </div>
           <TextArea
-            autoSize={{ minRows:1 }}
+            autoSize={{ minRows: 1 }}
             bordered={false}
             className={classes.codeBlock__input__textArea}
             value={component.content}
@@ -85,14 +87,13 @@ export default function CodeBlock({ component, index }) {
             <SyntaxHighlighter
               language={language}
               style={nightOwl}
-              showLineNumbers
-              wrapLongLines={true}>
+              showLineNumbers>
               {component.content}
             </SyntaxHighlighter>
           </div>
         </div>
       </div>
-      
+
     </div>
   );
 }

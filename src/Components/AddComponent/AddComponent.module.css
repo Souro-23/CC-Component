@@ -1,21 +1,21 @@
 .hoverMenu__Btn {
   background-color:white;
-  color: blue;
-  border:1px solid blue;
+  color: black;
+  border:2px solid transparent;
   font-size:1.5rem;
   width:3rem;
   padding-bottom: 0.3rem;
-  border-radius: 10px;
+  border-radius: 7px;
   cursor:pointer;
   margin-top: 10px;
   margin-bottom: 10px;
-
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
  
 }
-.moreIcon{
-  padding: 0.5rem;
-  color: grey;
-  font-size: 1.1rem;
+.add ion-icon{
+  padding:0.5rem;
+  color: black;
+  font-size: 1.5rem;
   background-color: #fafafa;
   margin-left: 10px;
   cursor: pointer;
