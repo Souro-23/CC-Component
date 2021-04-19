@@ -82,7 +82,9 @@ export default function CodeBlock({ component, index }) {
               language={language}
               style={nightOwl}
               showLineNumbers
-              wrapLongLines={true}>
+              wrapLines={true}
+              // wrapLongLines={true}
+            >
               {component.content}
             </SyntaxHighlighter>
           </div>

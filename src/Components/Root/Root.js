@@ -4,6 +4,7 @@ import CodeBlock from "../CodeBlock/CodeBlock";
 import MarkdownEditor from "../Markdown/Markdown";
 import QuizCreator from "../Quiz/QuizEditor";
 import { Row, Col } from "antd";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 export const subtopicContext = React.createContext();
 const UP = -1;
@@ -78,6 +79,7 @@ export default function Root() {
         handleMove,
         RemoveComponent,
       }}>
+      <VideoPlayer />
       {subtopic.map((component, index) => {
         if (component.type === "md")
           return (
