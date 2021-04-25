@@ -4,11 +4,8 @@ import CodeBlock from "../CodeBlock/CodeBlock";
 import MarkdownEditor from "../Markdown/Markdown";
 import QuizCreator from "../Quiz/QuizEditor";
 import { Row, Col } from "antd";
-<<<<<<< HEAD
-=======
 import CkEditor from "../CKEditor/CkEditor";
 import AddComponent from "../AddComponent/AddComponent";
->>>>>>> 3bdd116fa479b3d2ebe3b1fd02f8e7ea31653135
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 export const subtopicContext = React.createContext();
@@ -124,7 +121,6 @@ export default function Root() {
         handleMove,
         RemoveComponent,
       }}>
-      <VideoPlayer />
       {subtopic.map((component, index) => {
         if (component.type === "md")
           return (
