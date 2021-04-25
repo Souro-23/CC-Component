@@ -17,40 +17,43 @@ export default function Root() {
 
   const changeSubtopic = (index, content, type) => {
     const newSubtopic = subtopic.map((component, Index) => {
-      if (index === Index && (type === "md" || type==="ed"))
+      if (index === Index && (type === "md" || type === "ed"))
         return {
           type: type,
           content: content,
         };
-        if (index === Index && (type === "code"))
+      if (index === Index && type === "code")
         return {
           type: type,
           content: content,
-          language:"javascript"
-        };  
+          language: "javascript",
+        };
       if (index === Index && type === "img")
         return {
           type: type,
           src: content.src,
-          caption:content.caption,
-          isbackground:content.isbackground
-
+          caption: content.caption,
+          isbackground: content.isbackground,
         };
 
-        if (index === Index && type === "video")
+      if (index === Index && type === "video")
         return {
           type: type,
           src: content.src,
-          caption:content.caption,
-        };  
+          caption: content.caption,
+        };
+      if (index === Index && type === "quiz")
+        return {
+          type: type,
+          content: content,
+        };
       return component;
     });
     setSubtopic([...newSubtopic]);
-    console.log(newSubtopic)
+    console.log(newSubtopic);
   };
 
   const addComponent = (index, type) => {
-    
     // to add a new component in the array
     let MDComponent = {
       type: "md",
@@ -59,35 +62,53 @@ export default function Root() {
     let imageComponent = {
       type: "img",
       src: [],
-      caption:"",
-      isbackground:false
+      caption: "",
+      isbackground: false,
     };
     let quizComponent = {
-      // TODO 
       type: "quiz",
-      quizData: "",
+      content: [
+        {
+          question: "",
+          image: "",
+          type: 0,
+          options: [
+            {
+              index: 0,
+              content: "",
+              isCorrect: false,
+            },
+            {
+              index: 1,
+              content: "",
+              isCorrect: false,
+            },
+          ],
+          answer: "",
+        },
+      ],
     };
     let codeBlockComponent = {
       type: "code",
       content: "",
-      language:""
+      language: "",
     };
     let videoComponent = {
-      type:"video",
-      src:"",
-      caption:""
-    }
+      type: "video",
+      src: "",
+      caption: "",
+    };
     let edComponent = {
-      type:"ed",
-      content:"welcome to CKEditor",
-    }
+      type: "ed",
+      content: "welcome to CKEditor",
+    };
     let newSubtopic = subtopic;
     if (type === "md") newSubtopic.splice(index + 1, 0, MDComponent);
     if (type === "img") newSubtopic.splice(index + 1, 0, imageComponent);
     if (type === "quiz") newSubtopic.splice(index + 1, 0, quizComponent);
-    if (type === "code")  newSubtopic.splice(index + 1, 0, codeBlockComponent);
-    if (type === "video")  newSubtopic.splice(index + 1, 0, videoComponent);
-    if (type === "ed")  newSubtopic.splice(index + 1, 0, edComponent);
+    if (type === "code") newSubtopic.splice(index + 1, 0, codeBlockComponent);
+    if (type === "video") newSubtopic.splice(index + 1, 0, videoComponent);
+    if (type === "ed") newSubtopic.splice(index + 1, 0, edComponent);
     setSubtopic([...newSubtopic]);
   };
   const handleMove = (position, direction) => {
@@ -100,17 +121,15 @@ export default function Root() {
     const component = subtopic[position];
     let newSubtopic = subtopic.filter((item, index) => index !== position);
     newSubtopic.splice(position + direction, 0, component);
-    
-    console.log(newSubtopic)
+
+    console.log(newSubtopic);
     setSubtopic(newSubtopic);
   };
   const RemoveComponent = (position) => {
     let newSubtopic = subtopic.filter((item, index) => index !== position);
     setSubtopic([...newSubtopic]);
-    console.log(newSubtopic)
+    console.log(newSubtopic);
   };
-
-  
 
   return (
     <subtopicContext.Provider
@@ -124,45 +143,56 @@ export default function Root() {
       {subtopic.map((component, index) => {
         if (component.type === "md")
           return (
-            <div key={index} >
-              <MarkdownEditor   component={component} index={index} />
-              <AddComponent showMD={false} onAddComponent={addComponent} index={index} />
+            <div key={index}>
+              <MarkdownEditor component={component} index={index} />
+              <AddComponent
+                showMD={false}
+                onAddComponent={addComponent}
+                index={index}
+              />
             </div>
           );
         if (component.type === "img")
           return (
-            <div key={index}  >
-              <ImageSelector   component={component} index={index} />
+            <div key={index}>
+              <ImageSelector component={component} index={index} />
               <AddComponent onAddComponent={addComponent} index={index} />
             </div>
           );
         if (component.type === "quiz")
           return (
-            <div key={index} >
+            <div key={index}>
               <QuizCreator component={component} index={index} />
               <AddComponent onAddComponent={addComponent} index={index} />
             </div>
           );
         if (component.type === "code")
           return (
-            <div key={index} >
-              <CodeBlock  component={component} index={index} />
+            <div key={index}>
+              <CodeBlock component={component} index={index} />
               <AddComponent onAddComponent={addComponent} index={index} />
-            </div>)
+            </div>
+          );
 
         if (component.type === "ed")
           return (
-            <div key={index}  >
-              <CkEditor  component={component} index={index} />
-              <AddComponent showCKEditor ={false} onAddComponent={addComponent} index={index} />
-            </div>)
+            <div key={index}>
+              <CkEditor component={component} index={index} />
+              <AddComponent
+                showCKEditor={false}
+                onAddComponent={addComponent}
+                index={index}
+              />
+            </div>
+          );
 
         if (component.type === "video")
           return (
-            <div key={index} >
+            <div key={index}>
               <VideoPlayer component={component} index={index} />
               <AddComponent onAddComponent={addComponent} index={index} />
-            </div>)
+            </div>
+          );
       })}
     </subtopicContext.Provider>
   );
@@ -171,6 +201,29 @@ export default function Root() {
 var components = [
   {
     type: "ed",
-    content:"welcome to CKEditor",
+    content: "welcome to CKEditor",
+  },
+  {
+    type: "quiz",
+    content: [
+      {
+        question: "",
+        image: "",
+        type: 0,
+        options: [
+          {
+            index: 0,
+            content: "",
+            isCorrect: false,
+          },
+          {
+            index: 1,
+            content: "",
+            isCorrect: false,
+          },
+        ],
+        answer: "",
+      },
+    ],
   },
 ];
