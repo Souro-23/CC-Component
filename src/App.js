@@ -50,3 +50,59 @@ export default function App() {
     </Row>
   );
 }
+
+
+
+
+const format = {"name": "",
+  "content": [{
+      "type": "ed/md/quiz/code/img/video",
+    },
+    {
+      "type": "ed",
+      "content": "<html>",
+    },
+    {
+      "type": "md",
+      "content": "md",
+    },
+    {
+      "type": "quiz",
+      "content": [{
+        "question": "md",
+        "image": "url",
+        "type": 0 / 1,
+        "options": [
+          {
+            "content": "md",
+            "isans": "boolean",
+          },
+          {
+            "content": "md",
+            "isans": "boolean",
+          }
+        ],
+        "answer": "md",
+      }]
+    },
+
+    {
+      "type": "code",
+      "language": "",
+      "content": "",
+    },
+
+    {
+      "type": "img",
+      "caption": "txt",
+      "src": "url",
+      "isbackground": "",
+    },
+    {
+      "type": "video",
+      "caption": "txt",
+      "src": "url",
+    }
+
+  ]
+}

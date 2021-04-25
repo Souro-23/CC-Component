@@ -3,22 +3,34 @@ import { Popover } from "antd";
 import React from "react";
 import classes from "./AddComponent.module.css";
 
-const AddComponent = ({ onAddComponent, index }) => {
+const AddComponent = ({ onAddComponent, index, showCKEditor , showMD  }) => {
   const content = (
-    <div>
-      <FileImageOutlined onClick={() => onAddComponent(index,"image")}  className={classes.moreIcon} />
-      <LogoutOutlined onClick={() => onAddComponent(index,"quiz")}   className={classes.moreIcon} />
-      <PicCenterOutlined  onClick={() => onAddComponent(index,"md")}  className={classes.moreIcon}/>
-       <PicCenterOutlined onClick={() => onAddComponent(index, "codeBlock")} className={classes.moreIcon}/>
+    <div className={classes.add}>
+      <ion-icon onClick={() => onAddComponent(index, "img")} name="image-outline"></ion-icon>
+      {showMD?
+      <ion-icon onClick={() => onAddComponent(index, "md")} name="logo-markdown"></ion-icon>
+      :null
+      }
+      <ion-icon onClick={() => onAddComponent(index, "code")} name="code-outline"></ion-icon>
+      <ion-icon onClick={() => onAddComponent(index, "video")} name="videocam-outline"></ion-icon>
+      {showCKEditor ?
+        <ion-icon onClick={() => onAddComponent(index, "ed")} name="text-outline"></ion-icon>
+        : null
+      }
     </div>
   );
   return (
-    <div class={classes.hoverMenu}>
+    <div className={classes.hoverMenu}>
       <Popover content={content} placement="right">
         <button className={classes.hoverMenu__Btn}>+</button>
       </Popover>
     </div>
   );
 };
+
+AddComponent.defaultProps = {
+  showCKEditor: true,
+  showMD:true
+}
 
 export default AddComponent;

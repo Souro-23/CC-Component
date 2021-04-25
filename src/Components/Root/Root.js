@@ -4,6 +4,11 @@ import CodeBlock from "../CodeBlock/CodeBlock";
 import MarkdownEditor from "../Markdown/Markdown";
 import QuizCreator from "../Quiz/QuizEditor";
 import { Row, Col } from "antd";
+<<<<<<< HEAD
+=======
+import CkEditor from "../CKEditor/CkEditor";
+import AddComponent from "../AddComponent/AddComponent";
+>>>>>>> 3bdd116fa479b3d2ebe3b1fd02f8e7ea31653135
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 export const subtopicContext = React.createContext();
@@ -15,42 +20,77 @@ export default function Root() {
 
   const changeSubtopic = (index, content, type) => {
     const newSubtopic = subtopic.map((component, Index) => {
-      if (index === Index)
+      if (index === Index && (type === "md" || type==="ed"))
         return {
           type: type,
           content: content,
         };
+        if (index === Index && (type === "code"))
+        return {
+          type: type,
+          content: content,
+          language:"javascript"
+        };  
+      if (index === Index && type === "img")
+        return {
+          type: type,
+          src: content.src,
+          caption:content.caption,
+          isbackground:content.isbackground
+
+        };
+
+        if (index === Index && type === "video")
+        return {
+          type: type,
+          src: content.src,
+          caption:content.caption,
+        };  
       return component;
     });
-    console.log(index, content, newSubtopic);
-    setSubtopic(newSubtopic);
+    setSubtopic([...newSubtopic]);
+    console.log(newSubtopic)
   };
 
   const addComponent = (index, type) => {
+    
     // to add a new component in the array
     let MDComponent = {
       type: "md",
-      content: "",
+      content: "# hello there",
     };
     let imageComponent = {
-      type: "image",
-      src: "",
+      type: "img",
+      src: [],
+      caption:"",
+      isbackground:false
     };
     let quizComponent = {
+      // TODO 
       type: "quiz",
       quizData: "",
     };
     let codeBlockComponent = {
-      type: "codeBlock",
+      type: "code",
       content: "",
+      language:""
     };
+    let videoComponent = {
+      type:"video",
+      src:"",
+      caption:""
+    }
+    let edComponent = {
+      type:"ed",
+      content:"welcome to CKEditor",
+    }
     let newSubtopic = subtopic;
     if (type === "md") newSubtopic.splice(index + 1, 0, MDComponent);
-    if (type === "image") newSubtopic.splice(index + 1, 0, imageComponent);
+    if (type === "img") newSubtopic.splice(index + 1, 0, imageComponent);
     if (type === "quiz") newSubtopic.splice(index + 1, 0, quizComponent);
-    if (type === "codeBlock")
-      newSubtopic.splice(index + 1, 0, codeBlockComponent);
-    console.log(newSubtopic);
+    if (type === "code")  newSubtopic.splice(index + 1, 0, codeBlockComponent);
+    if (type === "video")  newSubtopic.splice(index + 1, 0, videoComponent);
+    if (type === "ed")  newSubtopic.splice(index + 1, 0, edComponent);
     setSubtopic([...newSubtopic]);
   };
   const handleMove = (position, direction) => {
@@ -63,12 +103,17 @@ export default function Root() {
     const component = subtopic[position];
     let newSubtopic = subtopic.filter((item, index) => index !== position);
     newSubtopic.splice(position + direction, 0, component);
+    
+    console.log(newSubtopic)
     setSubtopic(newSubtopic);
   };
   const RemoveComponent = (position) => {
     let newSubtopic = subtopic.filter((item, index) => index !== position);
-    setSubtopic(newSubtopic);
+    setSubtopic([...newSubtopic]);
+    console.log(newSubtopic)
   };
+
+  
 
   return (
     <subtopicContext.Provider
@@ -83,18 +128,45 @@ export default function Root() {
       {subtopic.map((component, index) => {
         if (component.type === "md")
           return (
-            <MarkdownEditor key={index} component={component} index={index} />
+            <div key={index} >
+              <MarkdownEditor   component={component} index={index} />
+              <AddComponent showMD={false} onAddComponent={addComponent} index={index} />
+            </div>
           );
-        if (component.type === "image")
+        if (component.type === "img")
           return (
-            <ImageSelector key={index} component={component} index={index} />
+            <div key={index}  >
+              <ImageSelector   component={component} index={index} />
+              <AddComponent onAddComponent={addComponent} index={index} />
+            </div>
           );
         if (component.type === "quiz")
           return (
-            <QuizCreator key={index} component={component} index={index} />
+            <div key={index} >
+              <QuizCreator component={component} index={index} />
+              <AddComponent onAddComponent={addComponent} index={index} />
+            </div>
           );
-        if (component.type === "codeBlock")
-          return <CodeBlock key={index} component={component} index={index} />;
+        if (component.type === "code")
+          return (
+            <div key={index} >
+              <CodeBlock  component={component} index={index} />
+              <AddComponent onAddComponent={addComponent} index={index} />
+            </div>)
+
+        if (component.type === "ed")
+          return (
+            <div key={index}  >
+              <CkEditor  component={component} index={index} />
+              <AddComponent showCKEditor ={false} onAddComponent={addComponent} index={index} />
+            </div>)
+
+        if (component.type === "video")
+          return (
+            <div key={index} >
+              <VideoPlayer component={component} index={index} />
+              <AddComponent onAddComponent={addComponent} index={index} />
+            </div>)
       })}
     </subtopicContext.Provider>
   );
@@ -102,42 +174,7 @@ export default function Root() {
 
 var components = [
   {
-    type: "md",
-    content:
-      "When (a \ne 0), there are two solutions to (ax^2 + bx + c = 0) and they are [x = {-b pm sqrt{b^2-4ac} over 2a}.]",
-  },
-  {
-    type: "image",
-    src: "This is image",
-  },
-  {
-    type: "quiz",
-    quizData: "this is a quiz",
-  },
-  {
-    type: "codeBlock",
-    content: "num => num + 1",
-  },
-  {
-    type: "md",
-    content: `~~~mermaid
-      graph TB
-      A[input]-->B[College]
-      B-- Exclude -->C[Region]
-      B-- Include -->D[Branch]
-      D-->E[Output]
-      C-- Include -->F[Branch]
-      C-- Exclude -->G[Nearest Regions Top 3]
-      F-- Include -->H[Pick Students Uniformly from selection]
-      F-- Exclude --> L[Pick Students Randomly From that Region]
-      G-->I[Branch]
-      I-- Include -->J[Pick Students Uniformly from selection]
-      I -- Exclude -->K[Pick Students Randomly]
-      ~~~
-  
-      ~~~ py
-      x=10
-      ~~~
-      `,
+    type: "ed",
+    content:"welcome to CKEditor",
   },
 ];

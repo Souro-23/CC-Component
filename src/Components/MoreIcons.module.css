@@ -1,0 +1,26 @@
+.more{
+    font-size:1.2rem;
+    background-color: rgb(235, 232, 232);
+    border-radius:3px;
+    padding: 0.2rem;
+    color: grey;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+.more :hover{
+    color:black;
+}
+.moreIcons{
+    display: flex;
+}
+.moreIcon{
+    padding: 0.5rem;
+    color: grey;
+    font-size: 1.1rem;
+    background-color: #fafafa;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.moreIcon:hover{
+    color: black;
+}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .playerWrapper {
   position: relative;
   padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
@@ -7,9 +8,36 @@
   position: absolute;
   top: 0;
   left: 0;
+=======
+.videoComponent{
+  padding: 1rem;
+  background-color: #fafafa;
+  border-radius: 10px;
+  
+}
+
+
+.playerWrapper {
+  display: flex;
+  justify-content: center;
+>>>>>>> 3bdd116fa479b3d2ebe3b1fd02f8e7ea31653135
 }
 
 .videoInput {
   display: flex;
   flex-direction: row;
 }
+<<<<<<< HEAD
+=======
+.videoInput input{
+  height: 2.5rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius:5px;
+}
+.videoInput button{
+  height: 2.5rem;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius:5px;
+}
+
+>>>>>>> 3bdd116fa479b3d2ebe3b1fd02f8e7ea31653135
