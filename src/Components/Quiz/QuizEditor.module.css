@@ -1,0 +1,70 @@
+ion-icon {
+  font-size: 24px;
+  color: grey;
+  cursor: pointer;
+}
+
+ion-icon:hover{
+  background-color: lightgray;
+}
+
+.row {
+  margin-bottom: 10px;
+}
+
+.loading {
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+  height: 15rem;
+  background-color: white;
+  border-radius: 5px;
+  align-items: center;
+}
+.imageDisplayContaner {
+  margin: 1rem;
+  position: relative;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2rem;
+}
+.cancelicon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: grey;
+  font-size: 1.5rem;
+}
+.selectedImage {
+  display: flex;
+  max-width: 60%;
+  margin: auto;
+  border-radius: 5px;
+}
+
+.quizTextArea {
+  border-bottom: 1px solid darkgray !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-left: none !important;
+  background: #fafafa !important;
+  overflow: hidden !important;
+}
+.quizTextArea:focus {
+  border-bottom: 2px solid #6c63ff !important;
+  box-shadow: none !important;
+}
+
+.quizInput {
+  border: none !important;
+  background: #fafafa !important;
+}
+
+.quizInput:hover {
+  border-bottom: 1px solid darkgray !important;
+}
+
+.quizInput:focus {
+  border-bottom: 2px solid #6c63ff !important;
+  box-shadow: none !important;
+}

@@ -1,27 +1,42 @@
-import { FileImageOutlined, LogoutOutlined, PicCenterOutlined } from "@ant-design/icons";
+import {
+  FileImageOutlined,
+  LogoutOutlined,
+  PicCenterOutlined,
+} from "@ant-design/icons";
 import { Popover } from "antd";
 import React from "react";
 import classes from "./AddComponent.module.css";
 
-const AddComponent = ({ onAddComponent, index, showCKEditor , showMD  }) => {
+const AddComponent = ({ onAddComponent, index, showCKEditor, showMD }) => {
   const content = (
     <div className={classes.add}>
-      <ion-icon onClick={() => onAddComponent(index, "img")} name="image-outline"></ion-icon>
-      {showMD?
-      <ion-icon onClick={() => onAddComponent(index, "md")} name="logo-markdown"></ion-icon>
-      :null
-      }
-      <ion-icon onClick={() => onAddComponent(index, "code")} name="code-outline"></ion-icon>
-      <ion-icon onClick={() => onAddComponent(index, "video")} name="videocam-outline"></ion-icon>
-      {showCKEditor ?
-        <ion-icon onClick={() => onAddComponent(index, "ed")} name="text-outline"></ion-icon>
-        : null
-      }
+      <ion-icon
+        onClick={() => onAddComponent(index, "img")}
+        name='image-outline'></ion-icon>
+      {showMD ? (
+        <ion-icon
+          onClick={() => onAddComponent(index, "md")}
+          name='logo-markdown'></ion-icon>
+      ) : null}
+      <ion-icon
+        onClick={() => onAddComponent(index, "code")}
+        name='code-outline'></ion-icon>
+      <ion-icon
+        onClick={() => onAddComponent(index, "video")}
+        name='videocam-outline'></ion-icon>
+      {showCKEditor ? (
+        <ion-icon
+          onClick={() => onAddComponent(index, "ed")}
+          name='text-outline'></ion-icon>
+      ) : null}
+      <ion-icon
+        onClick={() => onAddComponent(index, "quiz")}
+        name='help-circle-outline'></ion-icon>
     </div>
   );
   return (
     <div className={classes.hoverMenu}>
-      <Popover content={content} placement="right">
+      <Popover content={content} placement='right'>
         <button className={classes.hoverMenu__Btn}>+</button>
       </Popover>
     </div>
@@ -30,7 +45,7 @@ const AddComponent = ({ onAddComponent, index, showCKEditor , showMD  }) => {
 
 AddComponent.defaultProps = {
   showCKEditor: true,
-  showMD:true
-}
+  showMD: true,
+};
 
 export default AddComponent;
