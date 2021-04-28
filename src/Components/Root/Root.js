@@ -3,16 +3,20 @@ import ImageSelector from "../AddImage/ImageSelector";
 import CodeBlock from "../CodeBlock/CodeBlock";
 import MarkdownEditor from "../Markdown/Markdown";
 import QuizCreator from "../Quiz/QuizEditor";
-import { Row, Col } from "antd";
+import { Row, Col, Button } from "antd";
 import CkEditor from "../CKEditor/CkEditor";
 import AddComponent from "../AddComponent/AddComponent";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import Editor from "./Editor";
+import SubtopicView from "./SubtopicView";
+import { Header } from "antd/lib/layout/layout";
+import { Route } from "react-router";
 
 export const subtopicContext = React.createContext();
 const UP = -1;
 const DOWN = 1;
 
-export default function Root() {
+export default function Root(props) {
   const [subtopic, setSubtopic] = useState(components);
 
   const changeSubtopic = (index, content, type) => {
@@ -140,60 +144,15 @@ export default function Root() {
         handleMove,
         RemoveComponent,
       }}>
-      {subtopic.map((component, index) => {
-        if (component.type === "md")
-          return (
-            <div key={index}>
-              <MarkdownEditor component={component} index={index} />
-              <AddComponent
-                showMD={false}
-                onAddComponent={addComponent}
-                index={index}
-              />
-            </div>
-          );
-        if (component.type === "img")
-          return (
-            <div key={index}>
-              <ImageSelector component={component} index={index} />
-              <AddComponent onAddComponent={addComponent} index={index} />
-            </div>
-          );
-        if (component.type === "quiz")
-          return (
-            <div key={index}>
-              <QuizCreator component={component} index={index} />
-              <AddComponent onAddComponent={addComponent} index={index} />
-            </div>
-          );
-        if (component.type === "code")
-          return (
-            <div key={index}>
-              <CodeBlock component={component} index={index} />
-              <AddComponent onAddComponent={addComponent} index={index} />
-            </div>
-          );
-
-        if (component.type === "ed")
-          return (
-            <div key={index}>
-              <CkEditor component={component} index={index} />
-              <AddComponent
-                showCKEditor={false}
-                onAddComponent={addComponent}
-                index={index}
-              />
-            </div>
-          );
-
-        if (component.type === "video")
-          return (
-            <div key={index}>
-              <VideoPlayer component={component} index={index} />
-              <AddComponent onAddComponent={addComponent} index={index} />
-            </div>
-          );
-      })}
+      <Header >
+        <Button onClick={() => props.history.push("/view")}>
+          SEE
+          </Button>
+      </Header>
+      <br/><br/>
+      <Route path='/view' render={() => <SubtopicView subtopic={subtopic} addComponent={addComponent} />} />
+      <Route exact path="/" render={() => <Editor subtopic={subtopic} addComponent={addComponent} />} />
+      
     </subtopicContext.Provider>
   );
 }
