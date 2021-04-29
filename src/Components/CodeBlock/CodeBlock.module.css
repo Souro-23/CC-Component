@@ -44,3 +44,8 @@
   border: none;
   font-size: 17px;
 }
+
+
+.CodeBlockView pre{
+  border-radius: 10px;
+}

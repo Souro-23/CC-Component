@@ -54,7 +54,7 @@ export default function VideoPlayer({ component, index }) {
           placeholder='Paste Video URL here'></Input>
         <Button onClick={loadURL} type='primary'>
           Load
-        </Button>
+        </Button>  
       </div>
       {/* <Button onClick={uploadVideo} type='primary'>
         Upload Video
