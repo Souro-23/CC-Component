@@ -384,6 +384,7 @@ export default function QuizEditor({ component, index }) {
           style={{
             background: "#6c63ff",
             color: "white",
+            height: "40px",
             borderRadius: "5px",
           }}
           onClick={saveQuiz}>

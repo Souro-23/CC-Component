@@ -10,6 +10,9 @@ import VideoPlayer from "../VideoPlayer/VideoPlayer";
 export default function Editor({ subtopic, addComponent }) {
   return (
     <div>
+      {subtopic.length === 0 ? (
+        <AddComponent onAddComponent={addComponent} />
+      ) : null}
       {subtopic.map((component, index) => {
         if (component.type === "md")
           return (
@@ -23,7 +26,6 @@ export default function Editor({ subtopic, addComponent }) {
             </div>
           );
         if (component.type === "img") {
-          console.log(index);
           return (
             <Wrapper key={index}>
               <ImageSelector component={component} index={index} />

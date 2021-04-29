@@ -26,12 +26,11 @@ export default function Root(props) {
           language: "javascript",
         };
       if (index === Index && type === "img") {
-        console.log(index, Index, type);
         return {
           type: type,
           src: content.src,
           caption: content.caption,
-          isbackground: content.isbackground,
+          isBackground: content.isBackground,
         };
       }
       if (index === Index && type === "video")
@@ -58,9 +57,9 @@ export default function Root(props) {
     };
     let imageComponent = {
       type: "img",
-      src: [],
+      src: "",
       caption: "",
-      isbackground: false,
+      isBackground: false,
     };
     let quizComponent = {
       type: "quiz",
@@ -197,6 +196,6 @@ var components = [
     type: "img",
     src: [],
     caption: "",
-    isbackground: false,
+    isBackground: false,
   },
 ];

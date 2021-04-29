@@ -3,22 +3,6 @@ ion-icon {
   color: grey;
   cursor: pointer;
 }
-
-ion-icon:hover {
-  border-radius: 50%;
-  background: lightgray;
-}
-
-/* .iconBackground {
-  background: red;
-  border-radius: 10px;
-} */
-
-/* .iconBackground:hover {
-  background: darkgray;
-  border-radius: 10px;
-} */
-
 .row {
   margin-bottom: 10px;
 }
@@ -36,7 +20,7 @@ ion-icon:hover {
   margin: 1rem;
   max-width: fit-content;
   position: relative;
-  background-color: white;
+  background: #9e99f5;
   border-radius: 5px;
   padding: 2rem;
 }
@@ -48,9 +32,8 @@ ion-icon:hover {
   font-size: 1.5rem;
 }
 .selectedImage {
-  display: flex;
-  max-width: 60%;
-  margin: auto;
+  display: block;
+  max-width: 100%;
   border-radius: 5px;
 }
 
