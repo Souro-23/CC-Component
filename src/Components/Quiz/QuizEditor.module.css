@@ -4,9 +4,20 @@ ion-icon {
   cursor: pointer;
 }
 
-ion-icon:hover{
-  background-color: lightgray;
+ion-icon:hover {
+  border-radius: 50%;
+  background: lightgray;
 }
+
+/* .iconBackground {
+  background: red;
+  border-radius: 10px;
+} */
+
+/* .iconBackground:hover {
+  background: darkgray;
+  border-radius: 10px;
+} */
 
 .row {
   margin-bottom: 10px;
@@ -23,6 +34,7 @@ ion-icon:hover{
 }
 .imageDisplayContaner {
   margin: 1rem;
+  max-width: fit-content;
   position: relative;
   background-color: white;
   border-radius: 5px;
@@ -42,7 +54,8 @@ ion-icon:hover{
   border-radius: 5px;
 }
 
-.quizTextArea {
+.quizTextArea,
+.explanationTextArea {
   border-bottom: 1px solid darkgray !important;
   border-top: none !important;
   border-right: none !important;
@@ -50,7 +63,8 @@ ion-icon:hover{
   background: #fafafa !important;
   overflow: hidden !important;
 }
-.quizTextArea:focus {
+.quizTextArea:focus,
+.explanationTextArea:focus {
   border-bottom: 2px solid #6c63ff !important;
   box-shadow: none !important;
 }
@@ -58,6 +72,7 @@ ion-icon:hover{
 .quizInput {
   border: none !important;
   background: #fafafa !important;
+  height: -1px !important;
 }
 
 .quizInput:hover {
@@ -67,4 +82,22 @@ ion-icon:hover{
 .quizInput:focus {
   border-bottom: 2px solid #6c63ff !important;
   box-shadow: none !important;
+}
+
+.rowImageIcon,
+.rowInfoButton,
+.rowOptionIcon,
+.rowCrossIcon,
+.rowExplanationIcon,
+.rowCopyIcon {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  padding-top: 3px !important;
+  /* align-items: center !important; */
+}
+
+.rowAddExplanation {
+  height: 31px;
+  padding-top: 5px;
 }

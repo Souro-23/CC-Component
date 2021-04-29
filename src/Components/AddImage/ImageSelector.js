@@ -1,5 +1,5 @@
 import classes from "./ImageSelector.module.css";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { subtopicContext } from "../Root/Root";
 import { Popover, Spin } from "antd";
 import {
@@ -25,16 +25,20 @@ export default function ImageSelector({ component, index }) {
     addComponent,
   } = useContext(subtopicContext);
 
+  useEffect(() => {}, []);
+
   const content = (
     <div className={IconClasses.moreIcons}>
       <ArrowUpOutlined
         onClick={() => handleMove(index, UP)}
         className={IconClasses.moreIcon}
       />
-      <CloseCircleOutlined
-        onClick={() => RemoveComponent(index)}
-        className={IconClasses.moreIcon}
-      />
+      {subtopic.length !== 1 ? (
+        <CloseCircleOutlined
+          onClick={() => RemoveComponent(index)}
+          className={IconClasses.moreIcon}
+        />
+      ) : null}
       <ArrowDownOutlined
         onClick={() => handleMove(index, DOWN)}
         className={IconClasses.moreIcon}
@@ -53,6 +57,7 @@ export default function ImageSelector({ component, index }) {
 
     setTimeout(() => {
       uploadImage(fileObj);
+      e.target.value = "";
     }, 3000);
   };
 
@@ -66,13 +71,12 @@ export default function ImageSelector({ component, index }) {
       });
     }
     setImageArray([...uploadingFiles, ...imageArray]);
-
     changeSubtopic(
       index,
       {
         src: [...uploadingFiles, ...imageArray],
         caption: "image name",
-        isbackground: false,
+        isbackground: component.isbackground,
       },
       "img"
     );
@@ -118,7 +122,11 @@ export default function ImageSelector({ component, index }) {
                 className={classes.cancelicon}
                 onClick={() => removeFile(image.url)}
               />
-              <img className={classes.selectedImage} src={image.url} />
+              {component.isbackground ? (
+                <img className={classes.imageWithBackground} src={image.url} />
+              ) : (
+                <img className={classes.selectedImage} src={image.url} />
+              )}
             </div>
           )
         )}

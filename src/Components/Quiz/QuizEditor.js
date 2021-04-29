@@ -1,6 +1,17 @@
 import React, { useContext, useState } from "react";
 import { subtopicContext } from "../Root/Root";
-import { Popover, Input, Button, Select, message, Row, Col, Spin } from "antd";
+import {
+  Popover,
+  Input,
+  Button,
+  Select,
+  message,
+  Row,
+  Col,
+  Spin,
+  Divider,
+  Tooltip,
+} from "antd";
 import {
   ArrowUpOutlined,
   ArrowDownOutlined,
@@ -35,6 +46,7 @@ export default function QuizEditor({ component, index }) {
     if (checkQuestionCriteria()) {
       changeSubtopic(index, quizQuestions, "quiz");
       message.success("Quiz Saved");
+      console.log(quizQuestions);
     }
   };
 
@@ -78,6 +90,7 @@ export default function QuizEditor({ component, index }) {
     setImageUploading(true);
     setTimeout(() => {
       createImageUrl(fileObj);
+      e.target.value = "";
     }, 3000);
   };
 
@@ -125,29 +138,6 @@ export default function QuizEditor({ component, index }) {
     }
     return true;
   };
-
-  // const addQuestion = () => {
-  //   if (checkQuestionCriteria()) {
-  //     setCurrentQuestionIndex(currentQuestionIndex + 1);
-  //     var newArr = [...quizQuestions];
-  //     newArr.push({
-  //       question: "",
-  //       options: [
-  //         {
-  //           index: 0,
-  //           value: "",
-  //           isCorrect: false,
-  //         },
-  //         {
-  //           index: 1,
-  //           value: "",
-  //           isCorrect: false,
-  //         },
-  //       ],
-  //     });
-  //     setQuizQuestions(newArr);
-  //   }
-  // };
 
   const chooseQuestionType = (value) => {
     var newArr = [...quizQuestions];
@@ -209,8 +199,8 @@ export default function QuizEditor({ component, index }) {
         </Popover>
       </div>
       <div>
-        <Row gutter={[8]} justify='center' className={classes.row}>
-          <Col lg={15}>
+        <Row gutter={[8]} className={classes.row} justify='center'>
+          <Col lg={15} md={15} sm={15} xs={15}>
             <TextArea
               value={question}
               onChange={onQuestionChange}
@@ -219,9 +209,11 @@ export default function QuizEditor({ component, index }) {
               autoSize={{ minRows: 1 }}
             />
           </Col>
-          <Col lg={2}>
+          <Col lg={2} md={2} sm={2} xs={2} className={classes.rowImageIcon}>
             <label htmlFor='quizImages'>
-              <ion-icon name='image-outline'></ion-icon>
+              <div className={classes.iconBackground}>
+                <ion-icon name='image-outline'></ion-icon>
+              </div>
             </label>
             <input
               id='quizImages'
@@ -233,39 +225,50 @@ export default function QuizEditor({ component, index }) {
               onChange={uploadImage}
             />
           </Col>
-          <Col lg={6}>
-            <Select onChange={chooseQuestionType} defaultValue={type}>
+          <Col lg={6} md={6} sm={6} xs={6}>
+            <Select
+              onChange={chooseQuestionType}
+              defaultValue={type}
+              style={{ width: "100%" }}>
               <Option value={0}>Single Choice</Option>
               <Option value={1}>Multi Choice</Option>
             </Select>
           </Col>
-          <Col lg={1}>
-            <Popover
-              placement='right'
-              content='Markdown Supported'
-              trigger='hover'>
-              <InfoCircleOutlined style={{ fontSize: "20px", color: "grey" }} />
-            </Popover>
+          <Col lg={1} md={1} sm={1} xs={1} className={classes.rowInfoButton}>
+            <Tooltip title={"Markdown Supported"}>
+              <ion-icon name='alert-circle-outline'></ion-icon>
+            </Tooltip>
           </Col>
         </Row>
-        {imageUploading ? (
-          <div key={index} className={classes.loading}>
-            <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} />} />
-          </div>
-        ) : image !== "" ? (
-          <div key={index} className={classes.imageDisplayContaner}>
-            <CloseCircleOutlined
-              style={{ color: "grey" }}
-              className={classes.cancelicon}
-              onClick={() => removeFile(image)}
-            />
-            <img className={classes.selectedImage} src={image} />
-          </div>
-        ) : null}
+        <Row>
+          <Col lg={24} md={24} sm={24} xs={24}>
+            {imageUploading ? (
+              <div key={index} className={classes.loading}>
+                <Spin
+                  indicator={<LoadingOutlined style={{ fontSize: 24 }} />}
+                />
+              </div>
+            ) : image !== "" ? (
+              <div key={index} className={classes.imageDisplayContaner}>
+                <CloseCircleOutlined
+                  style={{ color: "grey" }}
+                  className={classes.cancelicon}
+                  onClick={removeFile}
+                />
+                <img className={classes.selectedImage} src={image} />
+              </div>
+            ) : null}
+          </Col>
+        </Row>
         {options.map((option, index) => (
           <div className={classes.optionBlock} key={index}>
             <Row gutter={[8]} justify='center' className={classes.row}>
-              <Col lg={1}>
+              <Col
+                lg={1}
+                md={2}
+                sm={2}
+                xs={2}
+                className={classes.rowOptionIcon}>
                 {type === 0 ? (
                   <ion-icon
                     name={
@@ -280,16 +283,16 @@ export default function QuizEditor({ component, index }) {
                     style={{ color: "#6c63ff" }}></ion-icon>
                 )}
               </Col>
-              <Col lg={22}>
+              <Col lg={22} md={20} sm={20} xs={20}>
                 <Input
                   className={classes.quizInput}
                   placeholder='Option'
-                  value={option.value}
+                  value={option.content}
                   maxLength={100}
                   onChange={(e) => onOptionChange(e, option.index)}
                 />
               </Col>
-              <Col lg={1}>
+              <Col lg={1} md={2} sm={2} xs={2} className={classes.rowCrossIcon}>
                 {options.length !== 1 ? (
                   <ion-icon
                     name='close'
@@ -300,53 +303,79 @@ export default function QuizEditor({ component, index }) {
           </div>
         ))}
         <Row gutter={[8]} className={classes.row} justify='center'>
-          <Col lg={1}>
+          <Col lg={1} md={2} sm={2} xs={2} className={classes.rowOptionIcon}>
             {type === 0 ? (
               <ion-icon name='radio-button-off'></ion-icon>
             ) : (
               <ion-icon name='square-outline'></ion-icon>
             )}
           </Col>
-          <Col lg={23} onClick={addOption} style={{ cursor: "pointer" }}>
+          <Col
+            lg={23}
+            md={22}
+            sm={22}
+            xs={22}
+            onClick={addOption}
+            style={{ cursor: "pointer", padding: "3px 10px" }}>
             Add Option +
           </Col>
         </Row>
+        <Divider style={{ marginBottom: "10px", marginTop: "5px" }} />
         <Row justify='center' gutter={[8]} className={classes.row}>
-          {explanation ? (
+          {explanation || answer ? (
             <>
-              <Col lg={1}>
+              <Col
+                lg={1}
+                md={2}
+                sm={2}
+                xs={2}
+                className={classes.rowExplanationIcon}>
                 <ion-icon
                   name='clipboard'
                   style={{ color: "#6c63ff" }}
                   onClick={() => toggleExplanation(false)}></ion-icon>
               </Col>
-              <Col lg={22}>
+              <Col lg={22} md={20} sm={20} xs={20}>
                 <TextArea
                   value={answer}
                   onChange={changeExplanation}
                   placeholder='Explanation'
                   autoSize={{ minRows: 1 }}
+                  className={classes.explanationTextArea}
                 />
               </Col>
             </>
           ) : (
             <>
-              <Col lg={1}>
+              <Col
+                lg={1}
+                md={2}
+                sm={2}
+                xs={2}
+                className={classes.rowExplanationIcon}>
                 <ion-icon
                   name='clipboard-outline'
                   style={{ color: "#6c63ff" }}
                   onClick={() => toggleExplanation(true)}></ion-icon>
               </Col>
-              <Col lg={22}>
+              <Col
+                lg={22}
+                md={20}
+                sm={20}
+                xs={20}
+                className={classes.rowAddExplanation}>
                 <p
-                  style={{ color: "#6c63ff", cursor: "pointer" }}
+                  style={{
+                    color: "#6c63ff",
+                    cursor: "pointer",
+                  }}
                   onClick={() => toggleExplanation(true)}>
                   Add Explanation
                 </p>
               </Col>
             </>
           )}
-          <Col lg={1}>
+          <Col lg={1} md={2} sm={2} xs={2} className={classes.rowCopyIcon}>
             <ion-icon name='copy-outline' onClick={duplicateQuiz}></ion-icon>
           </Col>
         </Row>

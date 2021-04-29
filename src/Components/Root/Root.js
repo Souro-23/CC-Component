@@ -1,16 +1,9 @@
 import React, { useState } from "react";
-import ImageSelector from "../AddImage/ImageSelector";
-import CodeBlock from "../CodeBlock/CodeBlock";
-import MarkdownEditor from "../Markdown/Markdown";
-import QuizCreator from "../Quiz/QuizEditor";
-import { Row, Col, Button } from "antd";
-import CkEditor from "../CKEditor/CkEditor";
-import AddComponent from "../AddComponent/AddComponent";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import Editor from "./Editor";
 import SubtopicView from "./SubtopicView";
 import { Header } from "antd/lib/layout/layout";
 import { Route } from "react-router";
+import { Button } from "antd";
 
 export const subtopicContext = React.createContext();
 const UP = -1;
@@ -32,14 +25,15 @@ export default function Root(props) {
           content: content,
           language: "javascript",
         };
-      if (index === Index && type === "img")
+      if (index === Index && type === "img") {
+        console.log(index, Index, type);
         return {
           type: type,
           src: content.src,
           caption: content.caption,
           isbackground: content.isbackground,
         };
-
+      }
       if (index === Index && type === "video")
         return {
           type: type,
@@ -54,10 +48,9 @@ export default function Root(props) {
       return component;
     });
     setSubtopic([...newSubtopic]);
-    console.log(newSubtopic);
   };
 
-  const addComponent = (index, type) => {
+  const addComponent = (index, type, content = null) => {
     // to add a new component in the array
     let MDComponent = {
       type: "md",
@@ -109,7 +102,15 @@ export default function Root(props) {
     let newSubtopic = subtopic;
     if (type === "md") newSubtopic.splice(index + 1, 0, MDComponent);
     if (type === "img") newSubtopic.splice(index + 1, 0, imageComponent);
-    if (type === "quiz") newSubtopic.splice(index + 1, 0, quizComponent);
+    if (type === "quiz") {
+      if (content !== null) {
+        quizComponent = {
+          type: "quiz",
+          content: content,
+        };
+      }
+      newSubtopic.splice(index + 1, 0, quizComponent);
+    }
     if (type === "code") newSubtopic.splice(index + 1, 0, codeBlockComponent);
     if (type === "video") newSubtopic.splice(index + 1, 0, videoComponent);
     if (type === "ed") newSubtopic.splice(index + 1, 0, edComponent);
@@ -126,13 +127,11 @@ export default function Root(props) {
     let newSubtopic = subtopic.filter((item, index) => index !== position);
     newSubtopic.splice(position + direction, 0, component);
 
-    console.log(newSubtopic);
     setSubtopic(newSubtopic);
   };
   const RemoveComponent = (position) => {
     let newSubtopic = subtopic.filter((item, index) => index !== position);
     setSubtopic([...newSubtopic]);
-    console.log(newSubtopic);
   };
 
   return (
@@ -144,15 +143,24 @@ export default function Root(props) {
         handleMove,
         RemoveComponent,
       }}>
-      <Header >
-        <Button onClick={() => props.history.push("/view")}>
-          SEE
-          </Button>
-      </Header>
-      <br/><br/>
-      <Route path='/view' render={() => <SubtopicView subtopic={subtopic} addComponent={addComponent} />} />
-      <Route exact path="/" render={() => <Editor subtopic={subtopic} addComponent={addComponent} />} />
-      
+      <Header>
+        <Button onClick={() => props.history.push("/view")}> SEE </Button>{" "}
+      </Header>{" "}
+      <br />
+      <br />
+      <Route
+        path='/view'
+        render={() => (
+          <SubtopicView subtopic={subtopic} addComponent={addComponent} />
+        )}
+      />{" "}
+      <Route
+        exact
+        path='/'
+        render={() => (
+          <Editor subtopic={subtopic} addComponent={addComponent} />
+        )}
+      />{" "}
     </subtopicContext.Provider>
   );
 }
@@ -184,5 +192,11 @@ var components = [
         answer: "",
       },
     ],
+  },
+  {
+    type: "img",
+    src: [],
+    caption: "",
+    isbackground: false,
   },
 ];

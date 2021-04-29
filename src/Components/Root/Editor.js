@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import ImageSelector from "../AddImage/ImageSelector";
 import CodeBlock from "../CodeBlock/CodeBlock";
 import MarkdownEditor from "../Markdown/Markdown";
@@ -7,12 +7,10 @@ import CkEditor from "../CKEditor/CkEditor";
 import AddComponent from "../AddComponent/AddComponent";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
-
-export default function Editor({subtopic ,addComponent}) {
-    console.log(subtopic)
-    return (
-        <div>
-            {subtopic.map((component, index) => {
+export default function Editor({ subtopic, addComponent }) {
+  return (
+    <div>
+      {subtopic.map((component, index) => {
         if (component.type === "md")
           return (
             <div key={index}>
@@ -24,20 +22,23 @@ export default function Editor({subtopic ,addComponent}) {
               />
             </div>
           );
-        if (component.type === "img")
+        if (component.type === "img") {
+          console.log(index);
           return (
-            <div key={index}>
+            <Wrapper key={index}>
               <ImageSelector component={component} index={index} />
               <AddComponent onAddComponent={addComponent} index={index} />
-            </div>
+            </Wrapper>
           );
-        if (component.type === "quiz")
+        }
+        if (component.type === "quiz") {
           return (
             <div key={index}>
               <QuizCreator component={component} index={index} />
               <AddComponent onAddComponent={addComponent} index={index} />
             </div>
           );
+        }
         if (component.type === "code")
           return (
             <div key={index}>
@@ -66,6 +67,10 @@ export default function Editor({subtopic ,addComponent}) {
             </div>
           );
       })}
-        </div>
-    )
+    </div>
+  );
 }
+
+const Wrapper = ({ children }) => {
+  return <>{children}</>;
+};
