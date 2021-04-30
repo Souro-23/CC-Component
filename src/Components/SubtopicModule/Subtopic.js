@@ -2,19 +2,34 @@ import React, { Component } from 'react';
 import { Button, Row, Col ,Modal} from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined ,ExclamationCircleOutlined} from '@ant-design/icons';
 import classes from './subtopic.module.css';
-
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const { confirm } = Modal;
 
 
 const UP = -1
 const DOWN = 1
+const grid=8
+
+const reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+  
+    return result;
+}
 
 
 export class CourseContent extends Component {
-    state = {
-      topics:topics,      
-    }  
+    constructor(props) {
+        super(props);
+        this.state = {
+          topics : topics
+        };
+        this.onDragEnd = this.onDragEnd.bind(this);
+      }
+      
+
     handleMove = (id, direction) => {
         const { topics } = this.state
         const position = topics.findIndex((i) => i.topic.sno === id)
@@ -43,6 +58,26 @@ export class CourseContent extends Component {
         })
         this.setState({ topics: newtopics })
     }
+
+    onDragEnd(result) {
+        // dropped outside the list
+        if (!result.destination) {
+          return;
+        }
+    
+        const topics = reorder(
+          this.state.topics,
+          result.source.index,
+          result.destination.index
+        );
+    
+        this.setState({
+          topics
+        });
+      }
+
+    
+    
     deleteTopic(topic, key) {
         
             const deletedTopic = this.state.topics.filter((topic, index) =>
@@ -69,10 +104,19 @@ export class CourseContent extends Component {
             onCancel() {
 
             },
-        });
+        });   
+        
+
+        // const topics=reorder(this.state.topics,result.source.index,result.destination.index);
+
+        // this.setState({topics});
     }
+
     render() {
+        
         const { topics } = this.state;
+
+        console.log(topics)
         let mainContent
         if (topics) {
             mainContent = topics.map((topic, index) => {
@@ -94,19 +138,39 @@ export class CourseContent extends Component {
                             <ion-icon style={{ cursor: 'pointer' }} onClick={() => this.handleMove(topic.topic.sno, DOWN)} size="large" name="chevron-down-outline"></ion-icon>
                         </div>
                         <ol style={{ marginLeft: "50px" }}>
-                            {topic.subtopics.map(subtopic => {
-                                // TODO add drag and drop  
-                                return (
-                                    <div key ={subtopic.id} className={classes.subtopicLink}>
-                                        <li id={subtopic.id}>
-                                            {subtopic.name}
-                                        </li>
-
-
-
-                                    </div>)
-                            })}
+                        <DragDropContext onDragEnd={this.onDragEnd}>
+                                <Droppable droppableId="droppable">
+                                {(provided, snapshot) => (
+                                    <div
+                                    {...provided.droppableProps}
+                                    ref={provided.innerRef}
+                                    // style={getListStyle(snapshot.isDraggingOver)}
+                                    >
+                                    {topic.subtopics.map((subtopic, index) => 
+                                        (
+                                        <Draggable key={subtopic.id} draggableId={subtopic.id} index={index}>
+                                        {(provided, snapshot) => (
+                                            <div
+                                            ref={provided.innerRef}
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}>
+                                      
+                                                        <div key ={subtopic.id} className={classes.subtopicLink}>
+                                                            <li id={subtopic.id}>
+                                                                {subtopic.name}
+                                                            </li>
+                                                        </div>
+                                            </div>
+                                        )}
+                                        </Draggable>)
+                                    )}
+                                    {provided.placeholder}
+                                    </div>
+                                )}
+                                </Droppable>
+                            </DragDropContext>
                         </ol>
+                        
                         <Button className={classes.AddButton} type="primary" shape="circle" icon={<PlusOutlined />} />
                     </div>
 
@@ -114,23 +178,19 @@ export class CourseContent extends Component {
             })
         }
         return (
-            <>
+            <div>
                 <Row justify="center">
                     <Col lg={16}>
                         <div style={{ padding: "20px" }}>                    
                                 {mainContent}
-                              
                         </div>
                     </Col>
                 </Row>
-            </>
+            </div>
         )
     }
 }
 export default CourseContent
-
-
-
 
 const topics = [
     {
