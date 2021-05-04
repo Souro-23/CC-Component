@@ -194,7 +194,7 @@ var components = [
   },
   {
     type: "img",
-    src: [],
+    src: "",
     caption: "",
     isBackground: false,
   },
