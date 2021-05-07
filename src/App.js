@@ -1,54 +1,117 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import "./App.css";
 import PathList from "./Components/Paths/PathList";
 import CardList from "./Components/Cards/CardList";
 import Subtopic from "./Components/SubtopicModule/Subtopic";
+import "./styles.css";
+import Root from "./Components/Root/Root";
 
-const { Content, Footer, Sider } = Layout;
+import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import { Col, Row } from "antd";
 
-const App = () => {
-  const [showSideDrawer, setShowSideDrawer] = useState(false);
-  const sideDrawerToggleHandler = (collapsed) => {
-    setShowSideDrawer(!collapsed);
-  };
+var components = [
+  {
+    type: "md",
+    content:
+      "When \\(a \ne 0\\), there are two solutions to (ax^2 + bx + c = 0) and they are [x = {-b pm sqrt{b^2-4ac} over 2a}.]",
+  },
+  {
+    type: "image",
+    src: "This is image",
+  },
+  {
+    type: "md",
+    content: `~~~mermaid
+    graph TB
+    A[input]-->B[College]
+    B-- Exclude -->C[Region]
+    B-- Include -->D[Branch]
+    D-->E[Output]
+    C-- Include -->F[Branch]
+    C-- Exclude -->G[Nearest Regions Top 3]
+    F-- Include -->H[Pick Students Uniformly from selection]
+    F-- Exclude --> L[Pick Students Randomly From that Region]
+    G-->I[Branch]
+    I-- Include -->J[Pick Students Uniformly from selection]
+    I -- Exclude -->K[Pick Students Randomly]
+    ~~~
+
+    ~~~ py
+    x=10
+    ~~~
+    `,
+  },
+];
+
+export default function App() {
   return (
-    <Layout>
-      <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={(broken) => {}}
-        collapsed={!showSideDrawer}
-        onCollapse={(collapsed, type) => {
-          sideDrawerToggleHandler(collapsed);
-        }}
-        style={{
-          position: "fixed",
-          height: "100vh",
-        }}
-      >
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="1">Home</Menu.Item>
-        </Menu>
-      </Sider>
-
-      <Layout>
-        <Content>
-          <div className="sitelayoutbackground">
-            <Router>
-              <Route path="/path" exact component={CardList} />
-              <Route path="/path/:id" component={PathList} />
-              <Route path ="/" component={Subtopic}/>
-            </Router>
-          </div>
-        </Content>
-        <Footer style={{ textAlign: "center" }}>
-          CitizenChoice ©2020 Created by react
-        </Footer>
-      </Layout>
-    </Layout>
+    <BrowserRouter>
+      <Row justify='center'>
+        <Col lg={12}>
+          <br />
+          <br />
+          <Route path="/" component={Root}/>
+        </Col>
+      </Row>
+    </BrowserRouter>
   );
-};
+}
 
-export default App;
+
+
+
+const format = {
+  "name": "",
+  "content": [{
+    "type": "ed/md/quiz/code/img/video",
+  },
+  {
+    "type": "ed",
+    "content": "<html>",
+  },
+  {
+    "type": "md",
+    "content": "md",
+  },
+  {
+    "type": "quiz",
+    "content": [{
+      "question": "md",
+      "image": "url",
+      "type": 0 / 1,
+      "options": [
+        {
+          "content": "md",
+          "isans": "boolean",
+        },
+        {
+          "content": "md",
+          "isans": "boolean",
+        }
+      ],
+      "answer": "md",
+    }]
+  },
+
+  {
+    "type": "code",
+    "language": "",
+    "content": "",
+  },
+
+  {
+    "type": "img",
+    "caption": "txt",
+    "src": "url",
+    "isbackground": "",
+  },
+  {
+    "type": "video",
+    "caption": "txt",
+    "src": "url",
+  }
+
+  ]
+}
