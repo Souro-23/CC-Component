@@ -1,0 +1,86 @@
+ion-icon {
+  font-size: 24px;
+  color: grey;
+  cursor: pointer;
+}
+.row {
+  margin-bottom: 10px;
+}
+
+.loading {
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+  height: 15rem;
+  background-color: white;
+  border-radius: 5px;
+  align-items: center;
+}
+.imageDisplayContaner {
+  margin: 1rem;
+  max-width: fit-content;
+  position: relative;
+  background: #9e99f5;
+  border-radius: 5px;
+  padding: 2rem;
+}
+.cancelicon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: grey;
+  font-size: 1.5rem;
+}
+.selectedImage {
+  display: block;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.quizTextArea,
+.explanationTextArea {
+  border-bottom: 1px solid darkgray !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-left: none !important;
+  background: #fafafa !important;
+  overflow: hidden !important;
+}
+.quizTextArea:focus,
+.explanationTextArea:focus {
+  border-bottom: 2px solid #6c63ff !important;
+  box-shadow: none !important;
+}
+
+.quizInput {
+  border: none !important;
+  background: #fafafa !important;
+  height: -1px !important;
+}
+
+.quizInput:hover {
+  border-bottom: 1px solid darkgray !important;
+}
+
+.quizInput:focus {
+  border-bottom: 2px solid #6c63ff !important;
+  box-shadow: none !important;
+}
+
+.rowImageIcon,
+.rowInfoButton,
+.rowOptionIcon,
+.rowCrossIcon,
+.rowExplanationIcon,
+.rowCopyIcon {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  padding-top: 3px !important;
+  /* align-items: center !important; */
+}
+
+.rowAddExplanation {
+  height: 31px;
+  padding-top: 5px;
+}
