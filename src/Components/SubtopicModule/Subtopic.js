@@ -43,7 +43,6 @@ export class CourseContent extends Component {
   handleMove = (id, direction) => {
     const { topics } = this.state;
     const position = topics.findIndex((i) => i.topic.sno === id);
-    // console.log(position);
     if (position < 0) {
       throw new Error("Given item not found.");
     } else if (
@@ -54,7 +53,6 @@ export class CourseContent extends Component {
     }
 
     const topic = topics[position];
-    // save item for later
     let newtopics = topics.filter((i) => i.topic.sno !== id);
     newtopics.splice(position + direction, 0, topic);
     console.log(newtopics, "before");
@@ -637,9 +635,3 @@ const topics = [
     ],
   },
 ];
-
-// <div key ={subtopic.id} className={classes.subtopicLink}>
-// <li id={subtopic.id}>
-//     {subtopic.name}
-// </li>
-// </div>
