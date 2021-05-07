@@ -1,49 +1,63 @@
 import React, { useState } from "react";
 import classes from "./ImageContainer.module.css";
 
-export default function ImageContainer({ component, index }) {
+export default function ImageContainer({
+  src,
+  caption = "Image",
+  isBackground = null,
+  index,
+}) {
   const [showModal, setShowModal] = useState(false);
 
+  const openModal = () => {
+    setShowModal(true);
+    var x = document.getElementsByTagName("BODY")[0];
+    x.style.overflow = "hidden";
+  };
+
+  const hideModal = () => {
+    setShowModal(false);
+    var x = document.getElementsByTagName("BODY")[0];
+    x.style.overflow = "visible";
+  };
   return (
     <div style={{ margin: "20px 0px" }}>
-      {component.isBackground ? (
-        <div
-          className={
-            component.isBackground ? classes.backgroundImageContainer : ""
-          }>
+      {isBackground !== null && isBackground === true ? (
+        <div className={classes.backgroundImageContainer}>
           <img
             className={classes.backgroundImage}
-            src={component.src}
-            alt={component.caption}
-            onClick={() => setShowModal(true)}
+            src={src}
+            alt={caption}
+            onClick={openModal}
           />
-          <p className={classes.imageCaption}>{component.caption}</p>
+          <p className={classes.imageCaption}>{caption}</p>
         </div>
       ) : (
-        <div style={{ border: "1px solid #9e99f5", borderRadius: "5px" }}>
+        <div
+          style={{
+            border: "1px solid #9e99f5",
+            borderRadius: "5px",
+            overflow: "hidden",
+          }}>
           <img
             className={classes.normalImage}
-            src={component.src}
-            alt={component.caption}
-            onClick={() => setShowModal(true)}
+            src={src}
+            alt={caption}
+            onClick={openModal}
           />
-          <p className={classes.imageCaption}>{component.caption}</p>
+          <p className={classes.imageCaption}>{caption}</p>
         </div>
       )}
 
       {showModal && (
         <div className={classes.modal}>
-          <span className={classes.close} onClick={() => setShowModal(false)}>
+          <span className={classes.close} onClick={hideModal}>
             &times;
           </span>
 
-          <img
-            className={classes.modalContent}
-            src={component.src}
-            alt={component.caption}
-          />
+          <img className={classes.modalContent} src={src} alt={caption} />
 
-          <div className={classes.caption}>{component.caption}</div>
+          <div className={classes.caption}>{caption}</div>
         </div>
       )}
     </div>

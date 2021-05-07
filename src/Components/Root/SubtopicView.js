@@ -1,32 +1,32 @@
-import React from 'react'
+import React from "react";
 import MarkdownView from "../Markdown/MarkdownView";
 import CkEditorView from "../CKEditor/CkEditorView";
-import CodeBlockView from '../CodeBlock/CodeBlockView'
-import ImageContainer from '../AddImage/ImageContainer' 
-import VideoPlayerView from '../VideoPlayer/VideoPlayerView'
+import CodeBlockView from "../CodeBlock/CodeBlockView";
+import ImageContainer from "../AddImage/ImageContainer";
+import VideoPlayerView from "../VideoPlayer/VideoPlayerView";
 
-export default function SubtopicView({subtopic}) {
-    return (
-        <div>
-            {subtopic.map((component, index) => {
+export default function SubtopicView({ subtopic }) {
+  return (
+    <div>
+      {subtopic.map((component, index) => {
         if (component.type === "md")
           return (
             <div key={index}>
-              <MarkdownView component={component} index={index}  />
+              <MarkdownView component={component} index={index} />
             </div>
           );
         if (component.type === "img")
           return (
             <div key={index}>
-              <ImageContainer component={component} index={index} />
+              <ImageContainer
+                src={component.src}
+                caption={component.caption}
+                isBackground={component.isBackground}
+                index={index}
+              />
             </div>
           );
-        if (component.type === "quiz")
-          return (
-            <div key={index}>
-              Quiz
-            </div>
-          );
+        if (component.type === "quiz") return <div key={index}>Quiz</div>;
         if (component.type === "code")
           return (
             <div key={index}>
@@ -48,6 +48,6 @@ export default function SubtopicView({subtopic}) {
             </div>
           );
       })}
-        </div>
-    )
+    </div>
+  );
 }

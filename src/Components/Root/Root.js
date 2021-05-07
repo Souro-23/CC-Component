@@ -196,6 +196,6 @@ var components = [
     type: "img",
     src: "",
     caption: "",
-    isBackground: false,
+    isBackground: true,
   },
 ];
