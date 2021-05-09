@@ -166,8 +166,9 @@ export default function Root(props) {
 
 var components = [
   {
-    type: "md",
-    content: "welcome to CKEditor",
+    type: "video",
+    src: "https://www.youtube.com/watch?v=lzu2liLRkJM",
+    caption:"Youtube Video" ,
   },
   // {
   //   type: "quiz",
