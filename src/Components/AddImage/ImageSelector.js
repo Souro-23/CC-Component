@@ -10,7 +10,6 @@ import {
   MoreOutlined,
   PicCenterOutlined,
 } from "@ant-design/icons";
-import AddComponent from "../AddComponent/AddComponent";
 import IconClasses from "../MoreIcons.module.css";
 
 const UP = -1;
@@ -25,7 +24,6 @@ export default function ImageSelector({ component, index }) {
     changeSubtopic,
     handleMove,
     RemoveComponent,
-    addComponent,
   } = useContext(subtopicContext);
 
   const toggleBackground = (value) => {
@@ -92,43 +90,6 @@ export default function ImageSelector({ component, index }) {
     );
   };
 
-  // const uploadMultipleFiles = (e) => {
-  //   const fileObj = e.target.files;
-  //   let uploadingFiles = [];
-  //   for (let i = 0; i < fileObj.length; i++) {
-  //     uploadingFiles.push({
-  //       uploading: true,
-  //     });
-  //   }
-  //   setImageArray([...uploadingFiles, ...imageArray]);
-
-  //   setTimeout(() => {
-  //     uploadImage(fileObj);
-  //     e.target.value = "";
-  //   }, 3000);
-  // };
-
-  // const uploadImage = (fileObj) => {
-  //   // TODO Some logics to uplaod image
-  //   let uploadingFiles = [];
-  //   for (let i = 0; i < fileObj.length; i++) {
-  //     uploadingFiles.push({
-  //       url: URL.createObjectURL(fileObj[i]),
-  //       uploading: false,
-  //     });
-  //   }
-  //   setImageArray([...uploadingFiles, ...imageArray]);
-  //   changeSubtopic(
-  //     index,
-  //     {
-  //       src: [...uploadingFiles, ...imageArray],
-  //       caption: "image name",
-  //       isbackground: component.isbackground,
-  //     },
-  //     "img"
-  //   );
-  // };
-
   const removeFile = () => {
     setImage("");
     changeSubtopic(
@@ -161,7 +122,8 @@ export default function ImageSelector({ component, index }) {
             multiple={true}
             accept='image/*'
             hidden
-            onChange={uploadImage}
+            // onChange={uploadImage}
+            onClick={()=>console.log(index, "Index")}
           />
         </div>
 

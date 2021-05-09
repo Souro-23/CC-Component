@@ -170,29 +170,6 @@ var components = [
     content: "welcome to CKEditor",
   },
   {
-    type: "quiz",
-    content: [
-      {
-        question: "",
-        image: "",
-        type: 0,
-        options: [
-          {
-            index: 0,
-            content: "",
-            isCorrect: false,
-          },
-          {
-            index: 1,
-            content: "",
-            isCorrect: false,
-          },
-        ],
-        answer: "",
-      },
-    ],
-  },
-  {
     type: "img",
     src: [],
     caption: "",
