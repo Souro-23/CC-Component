@@ -20,7 +20,7 @@ ion-icon {
   margin: 1rem;
   max-width: fit-content;
   position: relative;
-  background: #9e99f5;
+  background: #e9e8ff;
   border-radius: 5px;
   padding: 2rem;
 }
@@ -77,7 +77,6 @@ ion-icon {
   flex-direction: row !important;
   justify-content: center !important;
   padding-top: 3px !important;
-  /* align-items: center !important; */
 }
 
 .rowAddExplanation {

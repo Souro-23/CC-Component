@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body {
+  overflow: visible;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -40,18 +44,18 @@
   background: #fff;
   margin-left: 200px;
 }
-@media screen and (max-width:991px){
-  .sitelayoutbackground{
+@media screen and (max-width: 991px) {
+  .sitelayoutbackground {
     margin-left: 0px;
   }
 }
 
 .slide {
-	background-color:rgb(230, 230, 238)!important;
-	display: grid;
-	align-items: center;
-	height: auto;
+  background-color: rgb(230, 230, 238) !important;
+  display: grid;
+  align-items: center;
+  height: auto;
 }
-.carousel-status{
-	display:none;
+.carousel-status {
+  display: none;
 }
