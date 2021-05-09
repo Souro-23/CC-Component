@@ -1,0 +1,144 @@
+.quizViewCard {
+  border: 1px solid #9e99f5;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.quizHeader {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 20px;
+  border-bottom: 1px solid #9e99f5;
+  justify-content: space-between;
+}
+
+.quizHeader p {
+  margin-bottom: 0px;
+}
+
+.headerText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.optionText p {
+  margin-bottom: 0px;
+}
+
+.quizQuesOptionContainer {
+  padding: 20px;
+}
+.quizViewQuestion {
+  padding: 5px 0px;
+  font-weight: 600;
+}
+
+.optionBox {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #9e99f5;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0px;
+  cursor: pointer;
+}
+
+.optionText {
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.optionBox:hover {
+  background: #e9e8ff;
+}
+
+.quizButtons {
+  padding: 10px 20px;
+  border-top: 1px solid #9e99f5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #e9e8ff;
+}
+
+.quizButtons Button {
+  background: rgb(108, 99, 255) !important;
+  color: white !important;
+}
+
+.quizButtons Button:hover {
+  background: #9e99f5 !important;
+  box-shadow: none;
+  border: none;
+}
+
+.quizImage {
+  width: 100%;
+  padding: 10px;
+  height: 400px;
+}
+
+.yourAnsBox {
+  border: 2px solid #9e99f5;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0px;
+  cursor: pointer;
+  background: #e9e8ff;
+}
+
+.correctAnsBox {
+  border: 1px solid #39ff14;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0px;
+  background: #ceffc4;
+}
+
+.wrongAnsBox {
+  border: 1px solid rgb(253, 92, 92);
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0px;
+  background: #f7c4c4;
+}
+
+.afterOptionBox {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #9e99f5;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0px;
+}
+
+ion-icon {
+  color: #6c63ff;
+}
+
+.answerBox {
+  padding: 10px;
+  border: 1px solid #9e99f5;
+  border-radius: 5px;
+  background: #e9e8ff;
+  margin: 20px 0px 0px 0px;
+}
+
+.answerBox h3 {
+  font-weight: 600;
+  font-size: large;
+  text-decoration: underline;
+}
+
+.answerBox p {
+  margin-bottom: 0px;
+}

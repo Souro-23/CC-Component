@@ -173,22 +173,35 @@ var components = [
     type: "quiz",
     content: [
       {
-        question: "",
-        image: "",
-        type: 0,
+        question:
+          "Capital of India, someanother big question containing lot of things, someanother big question containing lot of things",
+        image:
+          "blob:http://localhost:3000/6183e7af-af12-409e-8ad4-e37e94fb676d",
+        type: 1,
         options: [
           {
             index: 0,
-            content: "",
+            content: "delhi",
+            isCorrect: true,
+          },
+          {
+            index: 1,
+            content: "mumbai",
             isCorrect: false,
           },
           {
             index: 1,
-            content: "",
+            content: "patna",
+            isCorrect: false,
+          },
+          {
+            index: 1,
+            content: "chennai",
             isCorrect: false,
           },
         ],
-        answer: "",
+        answer:
+          "Delhi is capital of india elhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of india",
       },
     ],
   },
@@ -196,6 +209,6 @@ var components = [
     type: "img",
     src: "",
     caption: "",
-    isBackground: true,
+    isBackground: false,
   },
 ];

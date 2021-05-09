@@ -20,7 +20,7 @@ export default function ImageContainer({
     var x = document.getElementsByTagName("BODY")[0];
     x.style.overflow = "visible";
   };
-  return (
+  return src !== "" ? (
     <div style={{ margin: "20px 0px" }}>
       {isBackground !== null && isBackground === true ? (
         <div className={classes.backgroundImageContainer}>
@@ -61,5 +61,5 @@ export default function ImageContainer({
         </div>
       )}
     </div>
-  );
+  ) : null;
 }

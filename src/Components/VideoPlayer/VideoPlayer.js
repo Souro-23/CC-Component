@@ -103,7 +103,7 @@ export default function VideoPlayer({ component, index }) {
         autoSize={{ minRows: 1 }}
         maxLength={200}
         onChange={captionChange}
-        placeholder='Enter Cation'
+        placeholder='Enter Caption'
         size='large'
         style={{ borderRadius: "5px", marginTop: "20px" }}
       />
