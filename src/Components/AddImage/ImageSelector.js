@@ -10,7 +10,6 @@ import {
   MoreOutlined,
   PicCenterOutlined,
 } from "@ant-design/icons";
-import AddComponent from "../AddComponent/AddComponent";
 import IconClasses from "../MoreIcons.module.css";
 
 const UP = -1;
@@ -24,7 +23,6 @@ export default function ImageSelector({ component, index }) {
     changeSubtopic,
     handleMove,
     RemoveComponent,
-    addComponent,
   } = useContext(subtopicContext);
 
   const toggleBackground = (value) => {
@@ -123,7 +121,8 @@ export default function ImageSelector({ component, index }) {
             multiple={true}
             accept='image/*'
             hidden
-            onChange={uploadImage}
+            // onChange={uploadImage}
+            onClick={()=>console.log(index, "Index")}
           />
         </div>
 
