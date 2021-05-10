@@ -143,7 +143,7 @@ export default function Root(props) {
         RemoveComponent,
       }}>
       <Header>
-        <Button onClick={() => props.history.push("/view")}> SEE </Button>{" "}
+        <Button onClick={() => props.history.push("/view")}> SEE Course Preview</Button>{" "}
       </Header>{" "}
       <br />
       <br />
