@@ -3,8 +3,10 @@ import classes from "./ImageContainer.module.css";
 
 export default function ImageContainer({
   src,
-  caption = "Image",
-  isBackground = null,
+  caption,
+  isBackground,
+  container,
+  alt,
   index,
 }) {
   const [showModal, setShowModal] = useState(false);
@@ -22,30 +24,31 @@ export default function ImageContainer({
   };
   return src !== "" ? (
     <div style={{ margin: "20px 0px" }}>
-      {isBackground !== null && isBackground === true ? (
+      {isBackground === true ? (
         <div className={classes.backgroundImageContainer}>
           <img
             className={classes.backgroundImage}
             src={src}
-            alt={caption}
+            alt={alt}
             onClick={openModal}
           />
-          <p className={classes.imageCaption}>{caption}</p>
+          {caption !== "" ? (
+            <p className={classes.imageCaption}>{caption}</p>
+          ) : null}
         </div>
       ) : (
-        <div
-          style={{
-            border: "1px solid #9e99f5",
-            borderRadius: "5px",
-            overflow: "hidden",
-          }}>
+        <div className={container ? classes.normalImageContainer : ""}>
           <img
             className={classes.normalImage}
             src={src}
-            alt={caption}
+            alt={alt}
             onClick={openModal}
           />
-          <p className={classes.imageCaption}>{caption}</p>
+          {caption !== "" ? (
+            <p className={classes.imageCaption}>{caption}</p>
+          ) : (
+            ""
+          )}
         </div>
       )}
 
@@ -55,7 +58,7 @@ export default function ImageContainer({
             &times;
           </span>
 
-          <img className={classes.modalContent} src={src} alt={caption} />
+          <img className={classes.modalContent} src={src} alt={alt} />
 
           <div className={classes.caption}>{caption}</div>
         </div>
@@ -63,3 +66,10 @@ export default function ImageContainer({
     </div>
   ) : null;
 }
+
+ImageContainer.defaultProps = {
+  caption: "",
+  isBackground: false,
+  container: false,
+  alt: "",
+};

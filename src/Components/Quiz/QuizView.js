@@ -9,6 +9,7 @@ import math from "remark-math";
 import gfm from "remark-gfm";
 import "katex/dist/katex.min.css";
 import "mermaid/dist/mermaid.min.js";
+import ImageContainer from "../AddImage/ImageContainer";
 
 const QuizView = ({ component, index }) => {
   const [yourAns, setYourAns] = useState([-1]);
@@ -91,7 +92,12 @@ const QuizView = ({ component, index }) => {
         <div className={classes.quizViewQuestion}>{question}</div>
         {image !== "" ? (
           <div>
-            <img src={image} alt='Quiz Image' className={classes.quizImage} />
+            <ImageContainer
+              src={image}
+              alt='Quiz Image'
+              isBackground={false}
+              container={false}
+            />
           </div>
         ) : null}
         {!showAns
@@ -145,8 +151,10 @@ const QuizView = ({ component, index }) => {
                   }>
                   <ion-icon
                     name={
-                      yourAns.includes(index)
-                        ? "radio-button-on"
+                      option.isCorrect
+                        ? "checkmark-circle-outline"
+                        : yourAns.includes(index)
+                        ? "close-circle-outline"
                         : "radio-button-off"
                     }
                     style={
@@ -171,7 +179,13 @@ const QuizView = ({ component, index }) => {
                   }
                   onClick={() => selectYourAns(index)}>
                   <ion-icon
-                    name={yourAns.includes(index) ? "square" : "square-outline"}
+                    name={
+                      option.isCorrect
+                        ? "checkbox-outline"
+                        : yourAns.includes(index)
+                        ? "close-outline"
+                        : "square-outline"
+                    }
                     style={
                       option.isCorrect
                         ? { color: "#39ff14" }
@@ -204,3 +218,6 @@ const QuizView = ({ component, index }) => {
 };
 
 export default QuizView;
+
+// <ion-icon name="close-circle-outline"></ion-icon>
+// <ion-icon name="checkmark-circle-outline"></ion-icon>

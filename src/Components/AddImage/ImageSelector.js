@@ -17,7 +17,6 @@ const UP = -1;
 const DOWN = 1;
 
 export default function ImageSelector({ component, index }) {
-  // const [imageArray, setImageArray] = useState([]);
   const [imageUploading, setImageUploading] = useState(false);
   const [image, setImage] = useState("");
   const {
@@ -33,7 +32,7 @@ export default function ImageSelector({ component, index }) {
       index,
       {
         src: image,
-        caption: "image name",
+        caption: "",
         isBackground: !value,
       },
       "img"
@@ -75,7 +74,7 @@ export default function ImageSelector({ component, index }) {
   };
 
   const createImageUrl = (fileObj) => {
-    // TODO Some logics to uplaod image
+    //TODO Some logics to uplaod image
 
     let url = URL.createObjectURL(fileObj);
     setImage(url);
@@ -85,49 +84,12 @@ export default function ImageSelector({ component, index }) {
       index,
       {
         src: url,
-        caption: "image name",
+        caption: "",
         isBackground: component.isBackground,
       },
       "img"
     );
   };
-
-  // const uploadMultipleFiles = (e) => {
-  //   const fileObj = e.target.files;
-  //   let uploadingFiles = [];
-  //   for (let i = 0; i < fileObj.length; i++) {
-  //     uploadingFiles.push({
-  //       uploading: true,
-  //     });
-  //   }
-  //   setImageArray([...uploadingFiles, ...imageArray]);
-
-  //   setTimeout(() => {
-  //     uploadImage(fileObj);
-  //     e.target.value = "";
-  //   }, 3000);
-  // };
-
-  // const uploadImage = (fileObj) => {
-  //   // TODO Some logics to uplaod image
-  //   let uploadingFiles = [];
-  //   for (let i = 0; i < fileObj.length; i++) {
-  //     uploadingFiles.push({
-  //       url: URL.createObjectURL(fileObj[i]),
-  //       uploading: false,
-  //     });
-  //   }
-  //   setImageArray([...uploadingFiles, ...imageArray]);
-  //   changeSubtopic(
-  //     index,
-  //     {
-  //       src: [...uploadingFiles, ...imageArray],
-  //       caption: "image name",
-  //       isbackground: component.isbackground,
-  //     },
-  //     "img"
-  //   );
-  // };
 
   const removeFile = () => {
     setImage("");

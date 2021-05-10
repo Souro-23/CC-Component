@@ -165,46 +165,46 @@ export default function Root(props) {
 }
 
 var components = [
-  {
-    type: "ed",
-    content: "welcome to CKEditor",
-  },
-  {
-    type: "quiz",
-    content: [
-      {
-        question:
-          "Capital of India, someanother big question containing lot of things, someanother big question containing lot of things",
-        image:
-          "blob:http://localhost:3000/6183e7af-af12-409e-8ad4-e37e94fb676d",
-        type: 1,
-        options: [
-          {
-            index: 0,
-            content: "delhi",
-            isCorrect: true,
-          },
-          {
-            index: 1,
-            content: "mumbai",
-            isCorrect: false,
-          },
-          {
-            index: 1,
-            content: "patna",
-            isCorrect: false,
-          },
-          {
-            index: 1,
-            content: "chennai",
-            isCorrect: false,
-          },
-        ],
-        answer:
-          "Delhi is capital of india elhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of india",
-      },
-    ],
-  },
+  // {
+  //   type: "ed",
+  //   content: "welcome to CKEditor",
+  // },
+  // {
+  //   type: "quiz",
+  //   content: [
+  //     {
+  //       question:
+  //         "Capital of India, someanother big question containing lot of things, someanother big question containing lot of things",
+  //       image:
+  //         "blob:http://localhost:3000/6183e7af-af12-409e-8ad4-e37e94fb676d",
+  //       type: 1,
+  //       options: [
+  //         {
+  //           index: 0,
+  //           content: "delhi",
+  //           isCorrect: true,
+  //         },
+  //         {
+  //           index: 1,
+  //           content: "mumbai",
+  //           isCorrect: false,
+  //         },
+  //         {
+  //           index: 1,
+  //           content: "patna",
+  //           isCorrect: false,
+  //         },
+  //         {
+  //           index: 1,
+  //           content: "chennai",
+  //           isCorrect: false,
+  //         },
+  //       ],
+  //       answer:
+  //         "Delhi is capital of india elhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of india",
+  //     },
+  //   ],
+  // },
   {
     type: "img",
     src: "",
