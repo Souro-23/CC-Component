@@ -12,7 +12,7 @@ export default function VideoPlayerView({ component }) {
                 className={classes.reactPlayer}
                 url={component.src}
                 controls={true}
-                width='90%'
+                width='100%'
                 style={{ borderRadius: "10px", overflow: "hidden" }}
             />
         </div>

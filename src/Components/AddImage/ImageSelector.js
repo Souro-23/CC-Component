@@ -1,7 +1,7 @@
 import classes from "./ImageSelector.module.css";
 import React, { useState, useContext } from "react";
 import { subtopicContext } from "../Root/Root";
-import { Popover, Spin } from "antd";
+import { Input, Popover, Spin } from "antd";
 import {
   ArrowDownOutlined,
   LoadingOutlined,
@@ -16,11 +16,8 @@ const UP = -1;
 const DOWN = 1;
 
 export default function ImageSelector({ component, index }) {
-  // const [imageArray, setImageArray] = useState([]);
   const [imageUploading, setImageUploading] = useState(false);
-  const [image, setImage] = useState("");
   const {
-    subtopic,
     changeSubtopic,
     handleMove,
     RemoveComponent,
@@ -30,13 +27,12 @@ export default function ImageSelector({ component, index }) {
     changeSubtopic(
       index,
       {
-        src: image,
-        caption: "image name",
+        src:component.src,
+        caption: component.caption,
         isBackground: !value,
       },
       "img"
     );
-    console.log(subtopic);
   };
 
   const content = (
@@ -54,7 +50,7 @@ export default function ImageSelector({ component, index }) {
         onClick={() => handleMove(index, DOWN)}
         className={IconClasses.moreIcon}
       />
-      {image ? (
+      {component.src!="" ? (
         <PicCenterOutlined
           onClick={() => toggleBackground(component.isBackground)}
           className={IconClasses.moreIcon}
@@ -76,22 +72,29 @@ export default function ImageSelector({ component, index }) {
     // TODO Some logics to uplaod image
 
     let url = URL.createObjectURL(fileObj);
-    setImage(url);
     setImageUploading(false);
 
     changeSubtopic(
       index,
       {
         src: url,
-        caption: "image name",
+        caption: "",
         isBackground: component.isBackground,
       },
       "img"
     );
   };
 
+  const captionChange = (e) => {
+    let content = {
+      src: component.src,
+      isBackground:component.isBackground,
+      caption: e.target.value,
+    };
+    changeSubtopic(index, content, "img");
+  };
+
   const removeFile = () => {
-    setImage("");
     changeSubtopic(
       index,
       {
@@ -112,18 +115,17 @@ export default function ImageSelector({ component, index }) {
               <MoreOutlined className={IconClasses.more} />
             </Popover>
           </div>
-          <label className={classes.addImage} htmlFor='subtopicImages'>
+          <label className={classes.addImage} htmlFor={'subtopicImages' + index}>
             Select an Image
           </label>
           <input
-            id='subtopicImages'
+            id={'subtopicImages' + index}
             type='file'
-            name='subtopicImages'
+            name={'subtopicImages' + index}
             multiple={true}
             accept='image/*'
             hidden
-            // onChange={uploadImage}
-            onClick={()=>console.log(index, "Index")}
+            onChange={uploadImage}
           />
         </div>
 
@@ -132,25 +134,37 @@ export default function ImageSelector({ component, index }) {
           <div key={index} className={classes.loading}>
             <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} />} />
           </div>
-        ) : image ? (
-          <div key={index} className={classes.imageDisplayContaner}>
-            <CloseCircleOutlined
-              className={classes.cancelicon}
-              onClick={removeFile}
-            />
-            <div className={classes.imageBackground}>
-              <img
-                className={
-                  component.isBackground
-                    ? `${classes.imageWithBackground}`
-                    : `${classes.selectedImage}`
-                }
-                src={image}
+        ) : component.src ? (
+          <>
+            <div key={index} className={classes.imageDisplayContaner}>
+              <CloseCircleOutlined
+                className={classes.cancelicon}
+                onClick={removeFile}
               />
+              <div className={classes.imageBackground}>
+                <img
+                  className={
+                    component.isBackground
+                      ? `${classes.imageWithBackground}`
+                      : `${classes.selectedImage}`
+                  }
+                  src={component.src}
+                />
+              </div>
             </div>
-          </div>
+            <div className={classes.videoInput}>
+              <Input
+                value={component.caption}
+                onChange={captionChange}
+                placeholder='Enter Caption'
+                size='large'>
+                </Input>
+            </div>
+          </>
         ) : null}
       </div>
     </div>
+
+
   );
 }
