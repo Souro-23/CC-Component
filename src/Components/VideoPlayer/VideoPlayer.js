@@ -4,46 +4,32 @@ import {
   CloseCircleOutlined,
   MoreOutlined,
 } from "@ant-design/icons";
-import { Button, Input, Popover } from "antd";
-import React, { useState, useContext } from "react";
+import { Input, Popover } from "antd";
+import React, { useContext } from "react";
 import ReactPlayer from "react-player/lazy";
 import { subtopicContext } from "../Root/Root";
 import classes from "./VideoPlayer.module.css";
 import IconClasses from "../MoreIcons.module.css";
-import TextArea from "antd/lib/input/TextArea";
 
 const UP = -1;
 const DOWN = 1;
 
 export default function VideoPlayer({ component, index }) {
-  const [videoURL, setVideoURL] = useState("");
-  const [url, setUrl] = useState("");
-  const [showVideoPlayer, setShowVideoPlayer] = useState(false);
-  const {
-    subtopic,
-    changeSubtopic,
-    handleMove,
-    RemoveComponent,
-    addComponent,
-  } = useContext(subtopicContext);
+  const { changeSubtopic, handleMove, RemoveComponent } =
+    useContext(subtopicContext);
 
   const onChangeHandler = (e) => {
-    setVideoURL(e.target.value);
+    let content = {
+      src: e.target.value,
+      caption: component.caption,
+    };
+    changeSubtopic(index, content, "video");
   };
 
   const captionChange = (e) => {
     let content = {
-      src: videoURL,
+      src: component.src,
       caption: e.target.value,
-    };
-    changeSubtopic(index, content, "video");
-  };
-  const loadURL = () => {
-    setUrl(videoURL);
-    setShowVideoPlayer(true);
-    let content = {
-      caption: "video caption",
-      src: videoURL,
     };
     changeSubtopic(index, content, "video");
   };
@@ -77,36 +63,34 @@ export default function VideoPlayer({ component, index }) {
       </div>
       <div className={classes.videoInput}>
         <Input
-          value={videoURL}
+          value={component.src}
           onChange={onChangeHandler}
           placeholder='Paste Video URL here'></Input>
-        <Button onClick={loadURL} type='primary'>
-          Load
-        </Button>
       </div>
-      {/* <Button onClick={uploadVideo} type='primary'>
-        Upload Video
-      </Button> */}
       <br />
       <div className={classes.playerWrapper}>
-        {showVideoPlayer && (
-          <ReactPlayer
-            className={classes.reactPlayer}
-            url={url}
-            controls={true}
-            width='90%'
-            style={{ borderRadius: "10px", overflow: "hidden" }}
-          />
+        {component.src !== "" && (
+          <>
+            <ReactPlayer
+              className={classes.reactPlayer}
+              url={component.src}
+              controls={true}
+              width='100%'
+              style={{ borderRadius: "10px", overflow: "hidden" }}
+            />
+          </>
         )}
       </div>
-      <TextArea
-        autoSize={{ minRows: 1 }}
-        maxLength={200}
-        onChange={captionChange}
-        placeholder='Enter Caption'
-        size='large'
-        style={{ borderRadius: "5px", marginTop: "20px" }}
-      />
+      <br />
+      {component.src !== "" && (
+        <div className={classes.videoInput}>
+          <Input
+            value={component.caption}
+            onChange={captionChange}
+            placeholder='Enter Caption'
+            size='large'></Input>
+        </div>
+      )}
     </div>
   );
 }

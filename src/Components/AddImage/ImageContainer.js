@@ -24,7 +24,7 @@ export default function ImageContainer({
   };
   return src !== "" ? (
     <div style={{ margin: "20px 0px" }}>
-      {isBackground === true ? (
+      {isBackground !== null && isBackground === true ? (
         <div className={classes.backgroundImageContainer}>
           <img
             className={classes.backgroundImage}

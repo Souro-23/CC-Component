@@ -1,10 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { Layout, Menu } from "antd";
 import "./App.css";
-import PathList from "./Components/Paths/PathList";
-import CardList from "./Components/Cards/CardList";
-import Subtopic from "./Components/SubtopicModule/Subtopic";
 import "./styles.css";
 import Root from "./Components/Root/Root";
 
@@ -52,66 +48,65 @@ export default function App() {
         <Col lg={12}>
           <br />
           <br />
-          <Route path="/" component={Root}/>
+          <Route path='/' component={Root} />
         </Col>
       </Row>
     </BrowserRouter>
   );
 }
 
-
-
-
 const format = {
-  "name": "",
-  "content": [{
-    "type": "ed/md/quiz/code/img/video",
-  },
-  {
-    "type": "ed",
-    "content": "<html>",
-  },
-  {
-    "type": "md",
-    "content": "md",
-  },
-  {
-    "type": "quiz",
-    "content": [{
-      "question": "md",
-      "image": "url",
-      "type": 0 / 1,
-      "options": [
+  name: "",
+  content: [
+    {
+      type: "ed/md/quiz/code/img/video",
+    },
+    {
+      type: "ed",
+      content: "<html>",
+    },
+    {
+      type: "md",
+      content: "md",
+    },
+    {
+      type: "quiz",
+      content: [
         {
-          "content": "md",
-          "isans": "boolean",
+          question: "md",
+          image: "url",
+          type: 0 / 1,
+          options: [
+            {
+              content: "md",
+              isans: "boolean",
+            },
+            {
+              content: "md",
+              isans: "boolean",
+            },
+          ],
+          answer: "md",
         },
-        {
-          "content": "md",
-          "isans": "boolean",
-        }
       ],
-      "answer": "md",
-    }]
-  },
+    },
 
-  {
-    "type": "code",
-    "language": "",
-    "content": "",
-  },
+    {
+      type: "code",
+      language: "",
+      content: "",
+    },
 
-  {
-    "type": "img",
-    "caption": "txt",
-    "src": "url",
-    "isbackground": "",
-  },
-  {
-    "type": "video",
-    "caption": "txt",
-    "src": "url",
-  }
-
-  ]
-}
+    {
+      type: "img",
+      caption: "txt",
+      src: "url",
+      isbackground: "",
+    },
+    {
+      type: "video",
+      caption: "txt",
+      src: "url",
+    },
+  ],
+};

@@ -22,6 +22,7 @@ export default function SubtopicView({ subtopic }) {
               caption={component.caption}
               isBackground={component.isBackground}
               index={index}
+              container={true}
             />
           );
         if (component.type === "quiz")

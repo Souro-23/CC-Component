@@ -196,6 +196,3 @@ const QuizView = ({ component, index }) => {
 };
 
 export default QuizView;
-
-// <ion-icon name="close-circle-outline"></ion-icon>
-// <ion-icon name="checkmark-circle-outline"></ion-icon>

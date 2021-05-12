@@ -9,6 +9,8 @@ import "katex/dist/katex.min.css";
 import "mermaid/dist/mermaid.min.js";
 
 const CCMarkdownComponent = ({ children }) => {
+  console.log(nightOwl);
+
   const renderers = {
     inlineMath: ({ value }) => <InlineMath math={value} />,
     math: ({ value }) => <BlockMath math={value} />,
@@ -22,6 +24,7 @@ const CCMarkdownComponent = ({ children }) => {
             language={language}
             children={value}
             showLineNumbers
+            customStyle={{ borderRadius: "5px" }}
           />
         );
       }

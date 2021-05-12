@@ -17,7 +17,6 @@ import {
   ArrowDownOutlined,
   MoreOutlined,
   CloseCircleOutlined,
-  InfoCircleOutlined,
   LoadingOutlined,
 } from "@ant-design/icons";
 import IconClasses from "../MoreIcons.module.css";
@@ -29,13 +28,8 @@ const UP = -1;
 const DOWN = 1;
 
 export default function QuizEditor({ component, index }) {
-  const {
-    subtopic,
-    changeSubtopic,
-    handleMove,
-    RemoveComponent,
-    addComponent,
-  } = useContext(subtopicContext);
+  const { changeSubtopic, handleMove, RemoveComponent, addComponent } =
+    useContext(subtopicContext);
 
   const [quizQuestions, setQuizQuestions] = useState(component.content);
   const [explanation, setExplanation] = useState(false);
@@ -63,7 +57,6 @@ export default function QuizEditor({ component, index }) {
   };
 
   const markCorrect = (index, value, type) => {
-    console.log(index, value, type);
     var newArr = [...quizQuestions];
     if (type === 0) {
       newArr[currentQuestionIndex].options.forEach((option, Index) => {
@@ -202,6 +195,7 @@ export default function QuizEditor({ component, index }) {
 
   const { image, answer, options, question, type } =
     quizQuestions[currentQuestionIndex];
+
   return (
     <div
       style={{
@@ -271,7 +265,7 @@ export default function QuizEditor({ component, index }) {
                   className={classes.cancelicon}
                   onClick={removeFile}
                 />
-                <img className={classes.selectedImage} src={image} />
+                <img className={classes.selectedImage} src={image} alt='' />
               </div>
             ) : null}
           </Col>

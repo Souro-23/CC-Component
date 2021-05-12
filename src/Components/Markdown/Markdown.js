@@ -18,13 +18,8 @@ const UP = -1;
 const DOWN = 1;
 
 export default function Markdown({ component, index }) {
-  const {
-    subtopic,
-    changeSubtopic,
-    handleMove,
-    RemoveComponent,
-    addComponent,
-  } = useContext(subtopicContext);
+  const { changeSubtopic, handleMove, RemoveComponent } =
+    useContext(subtopicContext);
 
   const changeContent = (e) => {
     changeSubtopic(index, e.target.value, "md");

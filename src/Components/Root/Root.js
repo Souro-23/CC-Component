@@ -10,7 +10,7 @@ const UP = -1;
 const DOWN = 1;
 
 export default function Root(props) {
-  const [subtopic, setSubtopic] = useState(components);
+  const [subtopic, setSubtopic] = useState([]);
 
   const changeSubtopic = (index, content, type) => {
     const newSubtopic = subtopic.map((component, Index) => {
@@ -165,39 +165,39 @@ export default function Root(props) {
   );
 }
 
-var components = [
-  // {
-  //   type: "ed",
-  //   content: "welcome to CKEditor",
-  // },
-  // {
-  //   type: "quiz",
-  //   content: [
-  //     {
-  //       question: "",
-  //       image: "",
-  //       type: 0,
-  //       options: [
-  //         {
-  //           index: 0,
-  //           content: "",
-  //           isCorrect: false,
-  //         },
-  //         {
-  //           index: 1,
-  //           content: "",
-  //           isCorrect: false,
-  //         },
-  //       ],
-  //       answer:
-  //         "",
-  //     },
-  //   ],
-  // },
-  // {
-  //   type: "img",
-  //   src: "",
-  //   caption: "",
-  //   isBackground: false,
-  // },
-];
+// var components = [
+//   // {
+//   //   type: "ed",
+//   //   content: "welcome to CKEditor",
+//   // },
+//   // {
+//   //   type: "quiz",
+//   //   content: [
+//   //     {
+//   //       question: "",
+//   //       image: "",
+//   //       type: 0,
+//   //       options: [
+//   //         {
+//   //           index: 0,
+//   //           content: "",
+//   //           isCorrect: false,
+//   //         },
+//   //         {
+//   //           index: 1,
+//   //           content: "",
+//   //           content: "chennai",
+//   //           isCorrect: false,
+//   //         },
+//   //       ],
+//   //       answer:
+//   //     },
+//   //   ],
+//   // },
+//   // {
+//   //   type: "img",
+//   //   src: "",
+//   //   caption: "",
+//   //   isBackground: false,
+//   // },
+// ];
