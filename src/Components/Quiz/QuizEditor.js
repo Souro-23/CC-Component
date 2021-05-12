@@ -3,7 +3,6 @@ import { subtopicContext } from "../Root/Root";
 import {
   Popover,
   Input,
-  Button,
   Select,
   message,
   Row,
@@ -31,63 +30,101 @@ export default function QuizEditor({ component, index }) {
   const { changeSubtopic, handleMove, RemoveComponent, addComponent } =
     useContext(subtopicContext);
 
-  const [quizQuestions, setQuizQuestions] = useState(component.content);
   const [explanation, setExplanation] = useState(false);
   const [imageUploading, setImageUploading] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  const saveQuiz = () => {
-    if (checkQuestionCriteria()) {
-      changeSubtopic(index, quizQuestions, "quiz");
-      message.success("Quiz Saved");
-      console.log(quizQuestions);
-    }
-  };
+  const { question, image, type, options, answer } =
+    component.content[currentQuestionIndex];
+  const { content } = component;
 
   const onQuestionChange = (e) => {
-    var newArr = [...quizQuestions];
-    newArr[currentQuestionIndex].question = e.target.value;
-    setQuizQuestions(newArr);
+    changeSubtopic(
+      index,
+      [
+        {
+          ...content[0],
+          question: e.target.value,
+        },
+      ],
+      "quiz"
+    );
   };
 
   const onOptionChange = (e, index) => {
-    var newArr = [...quizQuestions];
-    newArr[currentQuestionIndex].options[index].content = e.target.value;
-    setQuizQuestions(newArr);
+    var newArr = options;
+    newArr[index].content = e.target.value;
+    changeSubtopic(
+      index,
+      [
+        {
+          ...content[0],
+          options: newArr,
+        },
+      ],
+      "quiz"
+    );
   };
 
   const markCorrect = (index, value, type) => {
-    var newArr = [...quizQuestions];
+    var newArr = options;
     if (type === 0) {
-      newArr[currentQuestionIndex].options.forEach((option, Index) => {
+      newArr.forEach((option, Index) => {
         if (index === Index) {
           option.isCorrect = !value;
         } else {
           option.isCorrect = value;
         }
       });
-      setQuizQuestions(newArr);
-      return;
+    } else {
+      newArr[index].isCorrect = !value;
     }
-    newArr[currentQuestionIndex].options[index].isCorrect = !value;
-    setQuizQuestions(newArr);
+
+    changeSubtopic(
+      index,
+      [
+        {
+          ...content[0],
+          options: newArr,
+        },
+      ],
+      "quiz"
+    );
   };
 
   const addOption = () => {
-    var len = quizQuestions[currentQuestionIndex].options.length;
-    var newArr = [...quizQuestions];
-    newArr[currentQuestionIndex].options.push({
+    var len = options.length;
+    var newArr = options;
+    newArr.push({
       index: len,
       content: "",
       isCorrect: false,
     });
-    setQuizQuestions(newArr);
+    changeSubtopic(
+      index,
+      [
+        {
+          ...content[0],
+          options: newArr,
+        },
+      ],
+      "quiz"
+    );
   };
 
   const removeOption = (index) => {
-    var newArr = [...quizQuestions];
-    newArr[currentQuestionIndex].options.splice(index, 1);
-    setQuizQuestions(newArr);
+    var newArr = options;
+    newArr.splice(index, 1);
+    changeSubtopic(
+      index,
+      [
+        {
+          ...content[0],
+          options: newArr,
+        },
+      ],
+      "quiz"
+    );
   };
 
   const uploadImage = (e) => {
@@ -101,30 +138,44 @@ export default function QuizEditor({ component, index }) {
 
   const createImageUrl = (fileObj) => {
     let url = URL.createObjectURL(fileObj);
-    var newArr = [...quizQuestions];
-    newArr[currentQuestionIndex].image = url;
-    setQuizQuestions(newArr);
+    changeSubtopic(
+      index,
+      [
+        {
+          ...content[0],
+          image: url,
+        },
+      ],
+      "quiz"
+    );
     setImageUploading(false);
   };
 
   const removeFile = () => {
-    var newArr = [...quizQuestions];
-    newArr[currentQuestionIndex].image = "";
-    setQuizQuestions(newArr);
+    changeSubtopic(
+      index,
+      [
+        {
+          ...content[0],
+          image: "",
+        },
+      ],
+      "quiz"
+    );
   };
 
   // checks the each question requirements
   const checkQuestionCriteria = () => {
-    if (quizQuestions[currentQuestionIndex].question === "") {
+    if (question === "") {
       message.error("Question is required");
       return;
     }
 
-    let len = quizQuestions[currentQuestionIndex].options.length;
+    let len = options.length;
 
     // For checking options are not empty
     for (let i = 0; i < len; i++) {
-      if (quizQuestions[currentQuestionIndex].options[i].content === "") {
+      if (options[i].content === "") {
         message.error("Option required");
         return;
       }
@@ -133,7 +184,7 @@ export default function QuizEditor({ component, index }) {
     // For checking question must have answer
     var flag = 0;
     for (let i = 0; i < len; i++) {
-      if (quizQuestions[currentQuestionIndex].options[i].isCorrect === true) {
+      if (options[i].isCorrect === true) {
         flag = 1;
       }
     }
@@ -145,38 +196,60 @@ export default function QuizEditor({ component, index }) {
   };
 
   const chooseQuestionType = (value) => {
-    var newArr = [...quizQuestions];
+    var newArr = options;
     if (value === 0) {
-      newArr[currentQuestionIndex].options.forEach(
-        (option, index) => (option.isCorrect = false)
-      );
+      options.forEach((option, index) => (option.isCorrect = false));
     }
-    newArr[currentQuestionIndex].type = value;
-    setQuizQuestions(newArr);
+    changeSubtopic(
+      index,
+      [
+        {
+          ...content[0],
+          type: value,
+          options: newArr,
+        },
+      ],
+      "quiz"
+    );
   };
 
   const changeExplanation = (e) => {
-    var newArr = [...quizQuestions];
-    newArr[currentQuestionIndex].answer = e.target.value;
-    setQuizQuestions(newArr);
+    changeSubtopic(
+      index,
+      [
+        {
+          ...content[0],
+          answer: e.target.value,
+        },
+      ],
+      "quiz"
+    );
   };
 
   const duplicateQuiz = () => {
-    addComponent(index, "quiz", quizQuestions);
+    //TODO
+    addComponent(index, "quiz", content);
   };
 
   const toggleExplanation = (value) => {
     if (value) {
       setExplanation(true);
     } else {
-      var newArr = [...quizQuestions];
-      newArr[currentQuestionIndex].answer = "";
-      setQuizQuestions(newArr);
+      changeSubtopic(
+        index,
+        [
+          {
+            ...content[0],
+            answer: "",
+          },
+        ],
+        "quiz"
+      );
       setExplanation(false);
     }
   };
 
-  const content = (
+  const iconContent = (
     <div className={IconClasses.moreIcons}>
       <ArrowUpOutlined
         onClick={() => handleMove(index, UP)}
@@ -193,9 +266,6 @@ export default function QuizEditor({ component, index }) {
     </div>
   );
 
-  const { image, answer, options, question, type } =
-    quizQuestions[currentQuestionIndex];
-
   return (
     <div
       style={{
@@ -204,7 +274,7 @@ export default function QuizEditor({ component, index }) {
         borderRadius: "10px",
       }}>
       <div style={{ display: "flex", justifyContent: "end" }}>
-        <Popover placement='bottomRight' content={content} trigger='hover'>
+        <Popover placement='bottomRight' content={iconContent} trigger='hover'>
           <MoreOutlined className={IconClasses.more} />
         </Popover>
       </div>
@@ -220,15 +290,15 @@ export default function QuizEditor({ component, index }) {
             />
           </Col>
           <Col lg={2} md={2} sm={2} xs={2} className={classes.rowImageIcon}>
-            <label htmlFor='quizImages'>
+            <label htmlFor={`quizImage + ${index}`}>
               <div className={classes.iconBackground}>
                 <ion-icon name='image-outline'></ion-icon>
               </div>
             </label>
             <input
-              id='quizImages'
+              id={`quizImage + ${index}`}
               type='file'
-              name='quizImage'
+              name={`quizImage + ${index}`}
               multiple={false}
               accept='image/*'
               hidden
@@ -389,17 +459,6 @@ export default function QuizEditor({ component, index }) {
             <ion-icon name='copy-outline' onClick={duplicateQuiz}></ion-icon>
           </Col>
         </Row>
-        <Button
-          block
-          style={{
-            background: "#6c63ff",
-            color: "white",
-            height: "40px",
-            borderRadius: "5px",
-          }}
-          onClick={saveQuiz}>
-          Save
-        </Button>
       </div>
     </div>
   );

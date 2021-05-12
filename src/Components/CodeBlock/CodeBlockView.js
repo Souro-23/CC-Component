@@ -7,19 +7,18 @@ import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import classes from "./CodeBlock.module.css";
 
-
 export default function CodeBlockView({ component, index }) {
-    return (
-        <div>
-             
-            <div className={classes.CodeBlockView} >
-                <SyntaxHighlighter
-                    language={component.language}
-                    style={nightOwl}
-                    showLineNumbers>
-                    {component.content}
-                </SyntaxHighlighter>
-            </div>
-        </div>
-    )
+  return (
+    <div>
+      <div>
+        <SyntaxHighlighter
+          language={component.language}
+          style={nightOwl}
+          showLineNumbers>
+          customStyle={{ borderRadius: "5px" }}
+          {component.content}
+        </SyntaxHighlighter>
+      </div>
+    </div>
+  );
 }

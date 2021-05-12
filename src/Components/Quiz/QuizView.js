@@ -175,7 +175,7 @@ const QuizView = ({ component, index }) => {
                 </div>
               )
             )}
-        {showAns ? (
+        {showAns && answer !== "" ? (
           <div className={classes.answerBox}>
             <h3>Solution:</h3>
             <p>

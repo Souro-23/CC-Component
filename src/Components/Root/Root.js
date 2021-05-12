@@ -39,11 +39,13 @@ export default function Root(props) {
           src: content.src,
           caption: content.caption,
         };
-      if (index === Index && type === "quiz")
+      if (index === Index && type === "quiz") {
+        console.log(content);
         return {
           type: type,
-          content: content,
+          content: [...content],
         };
+      }
       return component;
     });
     setSubtopic([...newSubtopic]);
@@ -166,38 +168,38 @@ export default function Root(props) {
 }
 
 // var components = [
-//   // {
-//   //   type: "ed",
-//   //   content: "welcome to CKEditor",
-//   // },
-//   // {
-//   //   type: "quiz",
-//   //   content: [
-//   //     {
-//   //       question: "",
-//   //       image: "",
-//   //       type: 0,
-//   //       options: [
-//   //         {
-//   //           index: 0,
-//   //           content: "",
-//   //           isCorrect: false,
-//   //         },
-//   //         {
-//   //           index: 1,
-//   //           content: "",
-//   //           content: "chennai",
-//   //           isCorrect: false,
-//   //         },
-//   //       ],
-//   //       answer:
-//   //     },
-//   //   ],
-//   // },
-//   // {
-//   //   type: "img",
-//   //   src: "",
-//   //   caption: "",
-//   //   isBackground: false,
-//   // },
+//   {
+//     type: "ed",
+//     content: "welcome to CKEditor",
+//   },
+//   {
+//     type: "quiz",
+//     content: [
+//       {
+//         question: "",
+//         image: "",
+//         type: 0,
+//         options: [
+//           {
+//             index: 0,
+//             content: "",
+//             isCorrect: false,
+//           },
+//           {
+//             index: 1,
+//             content: "",
+//             content: "chennai",
+//             isCorrect: false,
+//           },
+//         ],
+//         answer:
+//       },
+//     ],
+//   },
+//   {
+//     type: "img",
+//     src: "",
+//     caption: "",
+//     isBackground: false,
+//   },
 // ];
