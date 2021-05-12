@@ -143,7 +143,8 @@ export default function Root(props) {
         RemoveComponent,
       }}>
       <Header>
-        <Button onClick={() => props.history.push("/view")}> SEE </Button>{" "}
+        <Button onClick={() => props.history.push("/")}> BACK </Button>{" "}
+        <Button onClick={() => props.history.push("/view")}> PREVIEW </Button>{" "}
       </Header>{" "}
       <br />
       <br />
@@ -173,42 +174,30 @@ var components = [
   //   type: "quiz",
   //   content: [
   //     {
-  //       question:
-  //         "Capital of India, someanother big question containing lot of things, someanother big question containing lot of things",
-  //       image:
-  //         "blob:http://localhost:3000/6183e7af-af12-409e-8ad4-e37e94fb676d",
-  //       type: 1,
+  //       question: "",
+  //       image: "",
+  //       type: 0,
   //       options: [
   //         {
   //           index: 0,
-  //           content: "delhi",
-  //           isCorrect: true,
-  //         },
-  //         {
-  //           index: 1,
-  //           content: "mumbai",
+  //           content: "",
   //           isCorrect: false,
   //         },
   //         {
   //           index: 1,
-  //           content: "patna",
-  //           isCorrect: false,
-  //         },
-  //         {
-  //           index: 1,
-  //           content: "chennai",
+  //           content: "",
   //           isCorrect: false,
   //         },
   //       ],
   //       answer:
-  //         "Delhi is capital of india elhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of indiaelhi is capital of india",
+  //         "",
   //     },
   //   ],
   // },
-  {
-    type: "img",
-    src: "",
-    caption: "",
-    isBackground: false,
-  },
+  // {
+  //   type: "img",
+  //   src: "",
+  //   caption: "",
+  //   isBackground: false,
+  // },
 ];

@@ -62,8 +62,20 @@ export default function QuizEditor({ component, index }) {
     setQuizQuestions(newArr);
   };
 
-  const markCorrect = (index, value) => {
+  const markCorrect = (index, value, type) => {
+    console.log(index, value, type);
     var newArr = [...quizQuestions];
+    if (type === 0) {
+      newArr[currentQuestionIndex].options.forEach((option, Index) => {
+        if (index === Index) {
+          option.isCorrect = !value;
+        } else {
+          option.isCorrect = value;
+        }
+      });
+      setQuizQuestions(newArr);
+      return;
+    }
     newArr[currentQuestionIndex].options[index].isCorrect = !value;
     setQuizQuestions(newArr);
   };
@@ -141,6 +153,11 @@ export default function QuizEditor({ component, index }) {
 
   const chooseQuestionType = (value) => {
     var newArr = [...quizQuestions];
+    if (value === 0) {
+      newArr[currentQuestionIndex].options.forEach(
+        (option, index) => (option.isCorrect = false)
+      );
+    }
     newArr[currentQuestionIndex].type = value;
     setQuizQuestions(newArr);
   };
@@ -183,9 +200,8 @@ export default function QuizEditor({ component, index }) {
     </div>
   );
 
-  const { image, answer, options, question, type } = quizQuestions[
-    currentQuestionIndex
-  ];
+  const { image, answer, options, question, type } =
+    quizQuestions[currentQuestionIndex];
   return (
     <div
       style={{
@@ -274,12 +290,12 @@ export default function QuizEditor({ component, index }) {
                     name={
                       option.isCorrect ? "radio-button-on" : "radio-button-off"
                     }
-                    onClick={() => markCorrect(index, option.isCorrect)}
+                    onClick={() => markCorrect(index, option.isCorrect, type)}
                     style={{ color: "#6c63ff" }}></ion-icon>
                 ) : (
                   <ion-icon
                     name={option.isCorrect ? "square" : "square-outline"}
-                    onClick={() => markCorrect(index, option.isCorrect)}
+                    onClick={() => markCorrect(index, option.isCorrect, type)}
                     style={{ color: "#6c63ff" }}></ion-icon>
                 )}
               </Col>

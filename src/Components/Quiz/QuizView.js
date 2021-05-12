@@ -1,39 +1,13 @@
 import { Button, message, Popover } from "antd";
 import React, { useState } from "react";
 import classes from "./QuizView.module.css";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import ReactMarkdown from "react-markdown";
-import { InlineMath, BlockMath } from "react-katex";
-import math from "remark-math";
-import gfm from "remark-gfm";
-import "katex/dist/katex.min.css";
-import "mermaid/dist/mermaid.min.js";
 import ImageContainer from "../AddImage/ImageContainer";
+import CCMarkdownComponent from "../CCMarkdown/CCMarkdownComponent";
 
 const QuizView = ({ component, index }) => {
   const [yourAns, setYourAns] = useState([-1]);
   const [showAns, setShowAns] = useState(false);
   const { question, image, type, options, answer } = component.content[0];
-
-  const renderers = {
-    inlineMath: ({ value }) => <InlineMath math={value} />,
-    math: ({ value }) => <BlockMath math={value} />,
-    code: ({ language, value }) => {
-      if (value) {
-        if (language === "mermaid")
-          return <div className={language} children={value} />;
-        return (
-          <SyntaxHighlighter
-            style={nightOwl}
-            language={language}
-            children={value}
-          />
-        );
-      }
-      return <div></div>;
-    },
-  };
 
   const selectYourAns = (value) => {
     if (type) {
@@ -89,7 +63,9 @@ const QuizView = ({ component, index }) => {
         </Popover>
       </div>
       <div className={classes.quizQuesOptionContainer}>
-        <div className={classes.quizViewQuestion}>{question}</div>
+        <div className={classes.quizViewQuestion}>
+          <CCMarkdownComponent children={question} />
+        </div>
         {image !== "" ? (
           <div>
             <ImageContainer
@@ -118,7 +94,7 @@ const QuizView = ({ component, index }) => {
                     }
                     style={{ color: "#6c63ff" }}></ion-icon>
                   <div className={classes.optionText}>
-                    <p>{option.content}</p>
+                    <CCMarkdownComponent children={option.content} />
                   </div>
                 </div>
               ) : (
@@ -133,7 +109,7 @@ const QuizView = ({ component, index }) => {
                     name={yourAns.includes(index) ? "square" : "square-outline"}
                     style={{ color: "#6c63ff" }}></ion-icon>
                   <div className={classes.optionText}>
-                    <p>{option.content}</p>
+                    <CCMarkdownComponent children={option.content} />
                   </div>
                 </div>
               )
@@ -165,7 +141,7 @@ const QuizView = ({ component, index }) => {
                         : { color: "#6c63ff" }
                     }></ion-icon>
                   <div className={classes.optionText}>
-                    <p>{option.content}</p>
+                    <CCMarkdownComponent children={option.content} />
                   </div>
                 </div>
               ) : (
@@ -194,7 +170,7 @@ const QuizView = ({ component, index }) => {
                         : { color: "#6c63ff" }
                     }></ion-icon>
                   <div className={classes.optionText}>
-                    <p>{option.content}</p>
+                    <CCMarkdownComponent children={option.content} />
                   </div>
                 </div>
               )
@@ -202,7 +178,9 @@ const QuizView = ({ component, index }) => {
         {showAns ? (
           <div className={classes.answerBox}>
             <h3>Solution:</h3>
-            <p>{answer}</p>
+            <p>
+              <CCMarkdownComponent children={answer} />
+            </p>
           </div>
         ) : (
           ""
