@@ -36,7 +36,7 @@ export default function Editor({ subtopic, addComponent }) {
         if (component.type === "quiz") {
           return (
             <div key={index}>
-              <QuizCreator component={component} index={index} />
+              <QuizCreator key={index} component={component} index={index} />
               <AddComponent onAddComponent={addComponent} index={index} />
             </div>
           );

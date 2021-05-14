@@ -51,33 +51,33 @@ export default function QuizEditor({ component, index }) {
     );
   };
 
-  const onOptionChange = (e, index) => {
+  const onOptionChange = (e, optionIndex) => {
     var newArr = options;
-    newArr[index].content = e.target.value;
+    newArr[optionIndex].content = e.target.value;
     changeSubtopic(
       index,
       [
         {
           ...content[0],
-          options: newArr,
+          options: [...newArr],
         },
       ],
       "quiz"
     );
   };
 
-  const markCorrect = (index, value, type) => {
+  const markCorrect = (optionIndex, value, type) => {
     var newArr = options;
     if (type === 0) {
       newArr.forEach((option, Index) => {
-        if (index === Index) {
+        if (optionIndex === Index) {
           option.isCorrect = !value;
         } else {
           option.isCorrect = value;
         }
       });
     } else {
-      newArr[index].isCorrect = !value;
+      newArr[optionIndex].isCorrect = !value;
     }
 
     changeSubtopic(
@@ -112,9 +112,9 @@ export default function QuizEditor({ component, index }) {
     );
   };
 
-  const removeOption = (index) => {
+  const removeOption = (optionIndex) => {
     var newArr = options;
-    newArr.splice(index, 1);
+    newArr.splice(optionIndex, 1);
     changeSubtopic(
       index,
       [
@@ -340,9 +340,13 @@ export default function QuizEditor({ component, index }) {
             ) : null}
           </Col>
         </Row>
-        {options.map((option, index) => (
-          <div className={classes.optionBlock} key={index}>
-            <Row gutter={[8]} justify='center' className={classes.row}>
+        {options.map((option, Index) => (
+          <div className={classes.optionBlock} key={`${index} + ${Index}`}>
+            <Row
+              gutter={[8]}
+              justify='center'
+              className={classes.row}
+              key={`${index} + ${Index}`}>
               <Col
                 lg={1}
                 md={2}
@@ -354,17 +358,18 @@ export default function QuizEditor({ component, index }) {
                     name={
                       option.isCorrect ? "radio-button-on" : "radio-button-off"
                     }
-                    onClick={() => markCorrect(index, option.isCorrect, type)}
+                    onClick={() => markCorrect(Index, option.isCorrect, type)}
                     style={{ color: "#6c63ff" }}></ion-icon>
                 ) : (
                   <ion-icon
                     name={option.isCorrect ? "square" : "square-outline"}
-                    onClick={() => markCorrect(index, option.isCorrect, type)}
+                    onClick={() => markCorrect(Index, option.isCorrect, type)}
                     style={{ color: "#6c63ff" }}></ion-icon>
                 )}
               </Col>
-              <Col lg={22} md={20} sm={20} xs={20}>
+              <Col lg={22} md={20} sm={20} xs={20} key={`${index} + ${Index}`}>
                 <Input
+                  key={`${index} + ${Index}`}
                   className={classes.quizInput}
                   placeholder='Option'
                   value={option.content}
@@ -376,7 +381,7 @@ export default function QuizEditor({ component, index }) {
                 {options.length !== 1 ? (
                   <ion-icon
                     name='close'
-                    onClick={() => removeOption(index)}></ion-icon>
+                    onClick={() => removeOption(Index)}></ion-icon>
                 ) : null}
               </Col>
             </Row>

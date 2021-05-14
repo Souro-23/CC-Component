@@ -40,7 +40,6 @@ export default function Root(props) {
           caption: content.caption,
         };
       if (index === Index && type === "quiz") {
-        console.log(content);
         return {
           type: type,
           content: [...content],
@@ -105,9 +104,19 @@ export default function Root(props) {
     if (type === "img") newSubtopic.splice(index + 1, 0, imageComponent);
     if (type === "quiz") {
       if (content !== null) {
+        console.log(content);
+        const { question, answer, image, type, options } = content[0];
         quizComponent = {
           type: "quiz",
-          content: content,
+          content: [
+            {
+              question: question,
+              answer: answer,
+              type: type,
+              image: image,
+              options: [...options],
+            },
+          ],
         };
       }
       newSubtopic.splice(index + 1, 0, quizComponent);
