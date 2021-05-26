@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+h1{
+  font-family: 'Bitter', serif;
+}
+h2{
+  font-family: 'Bitter', serif;
+}
+h3{
+  font-family: 'Bitter', serif;
+}
+h4{
+  font-family: 'Bitter', serif;
+}
+p{
+  font-family: 'Rubik', sans-serif;
+}
+span{
+  font-family: 'Rubik', sans-serif;
+}
+div{
+  font-family: 'Rubik', sans-serif;
+}

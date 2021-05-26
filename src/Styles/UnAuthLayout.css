@@ -1,0 +1,50 @@
+.logo {
+  height: 31px;
+  margin-top: auto;
+  margin-bottom: auto;
+  float: left;
+  font-size: 25px;
+}
+.logo a{
+  color: white;
+  font-weight:600;
+}
+.signup{
+  background-color: #544CD2;
+  color: #fff;
+  border: none;
+}
+.site-layout .site-layout-background {
+  background: #fff;
+}
+[data-theme="dark"] .site-layout .site-layout-background {
+  background: #141414;
+}
+
+.menu{
+	float: right;
+}
+
+@media screen and (max-width: 500px){
+  
+  .site-layout-background{
+    padding: 0px!important;
+  }
+  
+  .logo {
+    margin-left: 10px;
+  }
+  .signup{
+    margin-right: .7rem;
+  }
+  
+}
+
+
+@media screen and (max-width:345px){
+  
+  .Site-name{
+    display: none;
+  }
+}
+

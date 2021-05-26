@@ -1,0 +1,45 @@
+#components-layout-demo-responsive .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+.sitelayoutsubheaderbackground {
+  background: #fff;
+}
+
+.sitelayoutbackground {
+  background: #fff;
+  margin-left: 200px;
+}
+.logo {
+  height: 32px;
+  margin: 16px;
+  font-weight: 600;
+  color:white;
+  font-size: 25px;
+}
+.site-layout .site-layout-background {
+  background: #fff;
+}
+  [data-theme="dark"] .site-layout .site-layout-background {
+    background: #141414;
+  }
+.slider{
+  z-index: 500;
+}
+
+@media screen and (max-width:991px){
+  .sitelayoutbackground{
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width: 450px){
+  .sitelayoutbackground{
+    padding: 0px!important;
+  }
+  .antLayoutContent{
+    padding: 0px!important;
+  }  
+
+}

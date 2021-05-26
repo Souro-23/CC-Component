@@ -1,0 +1,36 @@
+.p{
+    justify-content: space-between;
+    padding: 7px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.p:hover{
+    background-color: #f1efef;
+}
+.r{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.q{
+    margin: 0px 10px;
+    overflow: hidden;
+}
+.q >h1{
+    margin: 0px;
+    font-size: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;  
+    overflow: hidden; 
+}
+.q > h5{
+    color:grey;
+    margin: 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden; 
+}
+.icon{
+    color: gainsboro;
+    border: 1px solid gainsboro;
+}

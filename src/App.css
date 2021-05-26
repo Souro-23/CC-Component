@@ -1,61 +1,66 @@
-.App {
-  text-align: center;
+@import '~antd/dist/antd.css';
+
+
+@media screen and (max-width: 500px){
+	.ant-layout-content , .site-layout {
+	padding: 0px!important;
+	}
+	.ant-layout-header{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.ant-layout-content{
+	/*margin:0px!important;*/
+	background-color: white!important;
+	}
 }
 
-body {
-  overflow: visible;
+
+/* antd changes */
+.ant-comment-inner {
+    display: -ms-flexbox;
+    display: flex;
+    padding: 6px 10px;
+}
+.ant-comment-actions {
+    margin-top:0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.sitelayoutbackground {
-  background: #fff;
-  margin-left: 200px;
-}
-@media screen and (max-width: 991px) {
-  .sitelayoutbackground {
-    margin-left: 0px;
-  }
-}
-
+/*  Carousel */
 .slide {
-  background-color: rgb(230, 230, 238) !important;
-  display: grid;
-  align-items: center;
-  height: auto;
+	background-color:white!important;
+	display: grid;
+	align-items: center;
+	height: auto;
 }
-.carousel-status {
-  display: none;
+.carousel-status{
+	display:none;
+}
+
+/*  React tiny link prevew  */
+.ecIkKa{
+	box-shadow:none!important;
+	max-width:none!important;
+	border-radius: 10px;
+	border:1px solid gainsboro!important;
+}
+.ecIkKa:hover{
+	background-color: white!important;
+}
+
+
+/* search input icon csss  */
+.ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button{
+	background-color:white;
+	height: 3.3rem;
+	color: #001529;
+	font-size: 1.5rem;
+	border:transparent;
+	box-shadow:none;
+	border-right: 1px solid gainsboro;
+	border-top: 1px solid gainsboro;
+	border-bottom: 1px solid gainsboro;
+	border-end-end-radius: 10px;
+	border-top-right-radius: 10px;
 }
