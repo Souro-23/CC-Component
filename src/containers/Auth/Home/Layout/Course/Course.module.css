@@ -1,0 +1,87 @@
+.banner{
+	width: 100%;
+	margin-top: 20px;
+	background-color: #001529;
+	padding:20px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+.SearchBox{
+	margin:2rem 0rem;
+}
+.SearchBox input{
+	height: 3.3rem;
+	font-size:1.2rem;
+	border-end-start-radius: 10px;
+	border-top-left-radius: 10px;
+}
+.bannerText{
+	margin-bottom: 40px;
+	width: 85%;
+}
+.courses{
+	width:80%;
+	margin:auto;
+}
+.card{
+	margin-left: 20px;
+}
+.coursesBox{ 
+	overflow-x: scroll;
+	display: flex;
+
+}
+.course{
+	display: flex;
+	box-shadow: 0px 0px 60px 0px rgba(71, 74, 182, 0.12);
+	margin-bottom: 20px;
+}
+.courseHeading{
+	font-size: 20px;
+}
+.coursePic{
+	width:300px
+}
+.coursePic img{
+	width:100%;
+	height:auto;
+}
+.courseContent{
+	padding:10px;
+}
+.sitecardwrapper {
+  background: white;
+  padding: 0px;
+  /*width: 100%;
+  overflow:scroll;
+  display: inline-block;*/
+}
+.notFound{
+	height:350px;
+
+}
+
+
+@media screen and (max-width: 450px){
+	.bannerText{
+	margin-bottom:20px;
+	width:100%;
+	}
+	.banner{
+		padding:30px;
+	}
+	.coursePic{
+	width:200px
+	}
+	.courseHeading{
+	font-size:15px;
+	}
+	.notFound{
+	background-size: cover;
+	}
+	.courses{
+		width:90%;
+	}
+
+
+}

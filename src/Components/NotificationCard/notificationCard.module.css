@@ -1,0 +1,132 @@
+.frindList{
+	display: grid;
+	grid-template-columns: 12% 86% 3%;
+	position: relative;
+	box-shadow:inset 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	border-radius:5px;
+	margin-bottom: 1rem;
+	width: 100%;
+}
+
+.ProfileImage{
+	padding: 5px;
+	margin: 0 .4rem;
+	display: flex;
+	align-items: center;
+}
+.ProfileImageimg{
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+}
+.ProfileBox{
+	font-size: 1rem;
+	font-weight: 600;
+	display: grid;
+	grid-template-columns: 76% 24%;
+	align-items: center;
+	align-content: center;
+	justify-content: space-between;
+	padding: .4rem;
+	margin: auto 0;
+	width: 90%;
+}
+.b{
+	word-wrap: break-word;
+	padding: 1rem;
+}
+
+.time{
+	display: block;
+	right: 2rem;
+	font-size: .8rem;
+	opacity: .6;
+}
+.tag{
+	display: flex;
+	justify-items: flex-end;
+	border-radius: .4rem;
+	width: 80%;
+	justify-content: center;
+}
+
+.icon{
+	display: inline-block;
+	padding: .6rem ;
+	font-size:1.2rem;
+}
+.comment{
+	background-color: #5c79f0;
+	opacity: .6;
+	padding: .2rem;
+}
+.like{
+	background-color: #fb7345;
+	opacity: .6;
+	padding: .2rem;
+}
+.info{
+	margin-top: 1rem;
+	display: flex;
+}
+@media screen and (max-width:600px){
+	.frindList{
+		display: flex;
+		word-break: break-word;
+		width: 100%;
+		padding: 10px;
+	}
+	.ProfileImage{
+		display: flex;
+		align-self: start;
+		top: 5%;
+	}
+	.ProfileImage>img{
+		height: 35px;
+		width: 35px;
+	}
+
+	.ProfileBox{
+		font-size: .8rem;
+		font-weight: 400;
+		display: block;
+		padding-left: 1rem;
+	}
+	.b{
+		word-wrap: break-word;
+		padding: 0rem;
+	}
+
+	.info{
+		margin-top: 0;
+		display: grid;
+		grid-template-columns: 40% 60%;
+		text-align: right;
+	}
+	.tag{
+		width: 100%;
+		margin: auto 0;
+	}
+	.icon{
+		padding: .3rem ;
+		font-size:1.2rem;
+		
+	}
+}
+.l h4 a{
+	margin-right: 5px;
+}
+.Button1{
+	color: #6c63ff;
+	margin-left:5px;
+	background-color: white;
+	border-radius: 5px;
+	border:1px solid #6c63ff;
+}
+.Button2{
+	color: white;
+ 
+	background-color: #6c63ff;
+	border-radius: 5px;
+	border:1px solid #6c63ff;
+}

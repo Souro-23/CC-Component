@@ -15,9 +15,8 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SUPER_COURSE_CREATOR }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CC_COMPONENT }}'
           channelId: live
-          projectId: super-course-creator
+          projectId: cc-component
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
-          CI: ""

@@ -1,0 +1,10 @@
+.card{
+	display: block;
+	top: 0px;
+	border-radius: 7px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+	position: relative;
+	z-index: 0;
+	 
+}
+ 

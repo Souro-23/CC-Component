@@ -1,0 +1,57 @@
+.k{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+.n{
+    padding:10%;
+}
+.n > h1{
+    font-size:65px;
+    font-family:'Bitter', serif;
+    font-weight: 700;
+    margin-bottom: -20px;
+    color: #6c63ff;
+}
+.n >div> p{
+    font-size: 18px;
+    font-family:'Bitter', serif;
+    margin-bottom: 0px;
+}
+.Button2{
+    margin-top:30px ;
+	color: white;
+	background-color: #6c63ff;
+    border-radius: 5px;
+    font-size: 18px;
+	height: 3rem;
+	border:1px solid #6c63ff;
+}
+.l{
+  width:100%;
+   height:auto;
+}
+@media screen and (max-width:1200px){
+    .n > h1{
+        font-size:45px;
+    }
+    .n >div> p{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:991px){
+    .k{
+        padding-top: 0px;
+        padding-bottom: 50px;
+    }
+    .n > h1{
+        font-size:45px;
+        
+    }
+    .l{
+        width:100%;
+        height:auto;
+        
+      }
+} 

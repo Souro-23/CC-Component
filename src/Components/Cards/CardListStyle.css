@@ -1,9 +1,0 @@
-.CardListContainer {
-     width: 100%;
-     min-height: 600px;
-     padding: 50px;
-     display: grid;
-     grid-template-columns: repeat(auto-fill, 325px);
-     grid-auto-rows: auto;
-     grid-gap: 1rem;
-}

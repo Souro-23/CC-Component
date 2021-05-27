@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "covidcareapp-test-server"
+    "default": "cc-component"
   }
 }
