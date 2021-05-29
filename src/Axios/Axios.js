@@ -6,7 +6,7 @@ import { message } from "antd";
 export const axiosAPI = (method, url, data = null) => {
   // const token = store.getState().auth.token;
   let headers = {};
-  let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIyMTAzMjY0LCJqdGkiOiJmZGIzM2RmN2EwYWQ0NTYyODg2N2VhZTRmOTk2ZDg1ZCIsInVzZXJfaWQiOjJ9.E9M1lK0a2mkQNRqCUjt9B_7Og25mWHHx1n6THKqufTE"
+  let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIyMjc4OTM1LCJqdGkiOiI5ZDY5MjMxOTU1YWY0NzEyODdkYWEyMjYyY2ExNGEyNSIsInVzZXJfaWQiOjR9.wR3meYZttRnmzvRTAMqR0SaJPbjUyNYEmviPnmtwQnk"
   if (token) {
     headers = {
       Authorization: `Bearer ${token}`,
