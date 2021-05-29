@@ -8,8 +8,9 @@ import {
   PaperClipOutlined,
 } from "@ant-design/icons";
 import { axiosAPI } from "../../../../Axios/Axios";
-import PathModule from "./pathModule/PathModule";
+import PathModule from "./PathModule/PathModule";
 import { Row, Col } from "antd";
+import { Course_path } from "../../../../Constants/ApiUrls";
 
 export default function PathModules() {
   const [list, setList] = useState(null);
@@ -20,7 +21,7 @@ export default function PathModules() {
   }, []);
 
   const getPaths = async () => {
-    axiosAPI("get", `https://demo.citizenchoice.in/path/${pathSlug}`)
+    axiosAPI("get", Course_path + pathSlug)
       .then((res) => {
         setList(res.data);
       })
