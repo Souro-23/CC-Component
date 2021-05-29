@@ -8,9 +8,8 @@ import {
   PaperClipOutlined,
 } from "@ant-design/icons";
 import { axiosAPI } from "../../../../Axios/Axios";
-import PathModule from "./PathModule/PathModule";
+import PathModule from "./pathModule/PathModule";
 import { Row, Col } from "antd";
-import { Course_path } from "../../../../Constants/ApiUrls";
 
 export default function PathModules() {
   const [list, setList] = useState(null);
@@ -20,7 +19,7 @@ export default function PathModules() {
     getPaths();
   }, []);
 
-  const getPaths = async () => {
+ const getPaths = async () => {
     axiosAPI("get", Course_path + pathSlug)
       .then((res) => {
         setList(res.data);
@@ -29,7 +28,6 @@ export default function PathModules() {
         console.log(err);
       });
   };
-
   return list ? (
     <div className={classes.PathListContainer}>
       <Row justify='center'>
