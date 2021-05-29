@@ -10,6 +10,7 @@ import {
 import { axiosAPI } from "../../../../Axios/Axios";
 import PathModule from "./pathModule/PathModule";
 import { Row, Col } from "antd";
+import { Course_path } from "../../../../Constants/ApiUrls";
 
 export default function PathModules() {
   const [list, setList] = useState(null);
