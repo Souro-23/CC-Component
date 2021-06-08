@@ -5,7 +5,7 @@ import CardDetails from "../../../../../CardDetails";
 // TODO Remove Start Learning Button and add small Course Card
 
 const PathModule = (props) => {
-  console.log(props.item);
+  
   return (
    
 
@@ -17,10 +17,9 @@ const PathModule = (props) => {
 {/* to make it flex i changed in css file of path module  */}
 {props.item.courses.map((course, index) => (
   <div className={classes.moduleBtn}>
-     <a  href={props.item.slug}>
+    
  <CardDetails course={course} key={index} />
   
-   </a>
    </div>
 
 ))}

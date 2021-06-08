@@ -1,11 +1,14 @@
 import React from 'react'
 import { ArrowRightOutlined } from "@ant-design/icons";
 import Card_class from "./CardDetails.module.css";
-import Images from "./Images/cover.png"
+import Images from "./Images/cover.png";
+import {Link} from 'react-router-dom';
+
 const CardDetails = (props) => {
-    const {name, content} = props.course;
+    const {name, content, slug} = props.course;
     
     return (
+        <Link to={{ pathname: "/course/" + slug }}>
         <div className={Card_class.Card_display}>
             <div className={Card_class.Card_details}>
             <div className={Card_class.course_image}>
@@ -20,6 +23,7 @@ const CardDetails = (props) => {
             </div>
             <ArrowRightOutlined />
         </div>
+        </Link>
     );
 };
 
