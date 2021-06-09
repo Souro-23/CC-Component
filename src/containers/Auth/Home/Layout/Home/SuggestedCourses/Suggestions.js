@@ -4,13 +4,14 @@ import classes from "./Suggestions.module.css";
 import { Affix } from "antd";
 import {
   Suggested_course,
-  Suggested_friends,
+  Suggested_friends
 } from "../../../../../../Constants/ApiUrls";
 
 import { Link } from "react-router-dom";
 
 import { ProfileSuggessionCard } from "../../../../../../Components/Suggession/SuggessionCard";
 import { axiosAPI } from "../../../../../../Axios/Axios";
+import { PageSuggessionCard } from "../../../../../../Components/Suggession/SuggestionPage";
 
 export default class Suggestions extends Component {
   state = {
@@ -59,50 +60,28 @@ export default class Suggestions extends Component {
               </div>
             </div>
           )}
-          <Affix offsetTop={10}>
+          {!this.props.isEmpty && (
             <div className={classes.s}>
               <div className={classes.h}>
-                <h1 style={{ fontSize: "20px" }}>Popular Courses</h1>
+                <h1 style={{ fontSize: "20px" }}>Suggested Pages</h1>
               </div>
-              {this.state.courses ? (
-                this.state.courses.slice(0, 3).map((course) => (
-                  <Link to={{ pathname: "/course/" + course.slug }}>
-                    <div className={classes.b}>
-                      <div className={classes.c}>
-                        <div className={classes.ci}>
-                          <img alt='course' src={course.image} />
-                        </div>
-                        <div className={classes.cn}>
-                          <h1>{course.name}</h1>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))
-              ) : (
-                <React.Fragment>
-                  <div style={{ margin: "0rem 1rem" }}>
-                    <Skeleton active avatar paragraph={{ rows: 1 }} />
-                    <Skeleton active avatar paragraph={{ rows: 1 }} />
-                  </div>
-                </React.Fragment>
-              )}
-
+              <div className={classes.f}>
+                <PageSuggessionCard profiles={this.state.users} />
+              </div>
               <div className={classes.g}>
-                <Link to={{ pathname: "/courses" }}>
+                <Link to={{ pathname: "/users" }}>
                   <p
                     style={{
                       fontSize: "15px",
-                      textAlign: "center",
                       color: "#6C63FF",
-                      cursor: "pointer",
+                      textAlign: "center",
                     }}>
                     View More
                   </p>
                 </Link>
               </div>
             </div>
-          </Affix>
+          )}
         </Col>
       </Row>
     );
