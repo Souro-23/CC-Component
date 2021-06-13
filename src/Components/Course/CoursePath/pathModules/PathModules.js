@@ -20,6 +20,7 @@ export default function PathModules() {
     getPaths();
   }, []);
 
+  // https://manas10pythonanywhere.com/path/Sedkjbidyear
  const getPaths = async () => {
     axiosAPI("get", Course_path + pathSlug)
       .then((res) => {
@@ -32,7 +33,9 @@ export default function PathModules() {
   return list ? (
     <div className={classes.PathListContainer}>
       <Row justify='center'>
-        <Col lg={17}>
+        <Col lg={22}md={23}sm={24}xs={25} >
+
+          {/* i changed  here lg from 17 to 22 because of overflow */}
           <div className={classes.PathList}>
             {list.subjects?.map((item, index) => {
               return (
@@ -43,7 +46,8 @@ export default function PathModules() {
             })}
           </div>
         </Col>
-        <Col lg={7}>
+        <Col lg={1}>
+          {/* i changed  here lg from 7 to 1 because of overflow */}
           <div className={classes.ModuleDetails}>
             <div className={classes.ModDet}>
               <ClockCircleOutlined style={{ color: "#2B7DE9" }} />

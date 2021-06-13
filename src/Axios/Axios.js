@@ -7,6 +7,8 @@ export const axiosAPI = (method, url, data = null) => {
   // const token = store.getState().auth.token;
   let headers = {};
   let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzODQzODc1LCJqdGkiOiIxYTdkOGFhYWU4MTY0MDI1ODYwZDY2YmE3NDUxNDA2ZCIsInVzZXJfaWQiOjR9.Y_fpMqhUaVfn_unOdkBctYjkqBtdEro7KZ7hXhCZESc"
+
+ 
   if (token) {
     headers = {
       Authorization: `Bearer ${token}`,
@@ -27,7 +29,7 @@ export const axiosAPI = (method, url, data = null) => {
         resolve(res);
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         let err;
 
         if (error.response) {

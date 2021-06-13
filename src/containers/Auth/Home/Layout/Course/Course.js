@@ -40,7 +40,7 @@ export class Course extends React.Component {
         console.log(error);
       });
 
-    axiosAPI("get",Course_path)
+    axiosAPI("get", Course_path)
       .then((res) => {
         console.log("Path Res", res);
         this.setState({
@@ -97,18 +97,17 @@ export class Course extends React.Component {
     return (
       <React.Fragment>
         {/*  <DynamicTitle title='Explore | CitizenChoice' /> */}
-        <Row justify='center'>
+        <Row justify="center">
           <Col sm={19} sx={20}>
-            <div className={classes.SearchBox}>
-              <Search
-                placeholder='What you want to learn?'
-                enterButton
-                // onKeyUp={(e) => this.esSearching(e.target.value)}
-                // loading={this.state.searching}
-                size='large'
-                // onSearch={(e) => this.esSearching(e)}
-              />
-            </div>
+            <Search
+              className={classes.SearchBox}
+              placeholder="What you want to learn?"
+              // enterButton
+              // allowClear
+              // onSearch={onSearch}
+              // style={{ width: 200 }}
+              size="large"
+            />
           </Col>
         </Row>
 
@@ -116,7 +115,8 @@ export class Course extends React.Component {
           {this.state.noDataFound ? (
             <div
               className={classes.notFound}
-              style={{ backgroundImage: `url(${booknotfound})` }}>
+              style={{ backgroundImage: `url(${booknotfound})` }}
+            >
               <div style={{ textAlign: "center", fontSize: "30px" }}>
                 <h1 style={{ color: "black" }}>We're Sorry!</h1>
               </div>
@@ -125,7 +125,8 @@ export class Course extends React.Component {
                   color: "black",
                   textAlign: "center",
                   fontSize: "18px",
-                }}>
+                }}
+              >
                 <p>
                   We can't seem to find any course that match for{" "}
                   <b>"{this.state.query}"</b>
