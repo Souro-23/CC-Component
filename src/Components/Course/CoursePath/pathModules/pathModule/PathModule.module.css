@@ -30,22 +30,29 @@
     -webkit-box-orient: vertical;  
     overflow: hidden;
 }
-.moduleBtn {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    border: 2px solid #f0f0f0;
+
+.moduleBtn{
+   position: relative;
+   /* changes positon from absolute to relative */
+    box-sizing: border-box;
+    margin: 10px;
     border-radius: 0.35rem;
-    padding: 5px 10px;
-    color: #8A89FF;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 1px;
-    background-color: white;
 }
-
-@media only screen and (max-width: 600px) {
+.moduleBtn_display{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+@media(max-width: 600px) {
+    /* changed here only screen to normal max-width */
     .description {
          -webkit-line-clamp: 5;
+    }
+    .moduleBtn_display{
+       display: flex;
+       flex-direction: column;
     }
 }

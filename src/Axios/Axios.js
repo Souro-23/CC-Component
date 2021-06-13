@@ -8,6 +8,7 @@ export const axiosAPI = (method, url, data = null) => {
   let headers = {};
   let token =
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzMTcwNzY1LCJqdGkiOiI4ZDhjYTJlODEzYzQ0NTdkODEyYjk0MGZhM2NlM2QyMSIsInVzZXJfaWQiOjR9.XhAZK8UAED8XZdTFF8oAkN4zZVkdse6uZ6yv5PjHqe8";
+
   if (token) {
     headers = {
       Authorization: `Bearer ${token}`,
